@@ -38,10 +38,10 @@
     <div class="topbar d-flex align-items-center">
       <div class="container d-flex justify-content-center justify-content-md-between">
         <div class="d-none d-md-flex align-items-center">
-          <i class="bi bi-clock me-1"></i> Monday - Saturday, 8AM to 10PM
+          <i class="bi bi-phone me-1"></i>  Call us now +25470565626
         </div>
         <div class="d-flex align-items-center">
-          <i class="bi bi-phone me-1"></i> Call us now +254705656265
+          <i class="bi bi-clock me-1"></i> </i> Monday - Sunday, Open 24 Hours Services
         </div>
       </div>
     </div><!-- End Top Bar -->
@@ -49,10 +49,10 @@
     <div class="branding d-flex align-items-center">
 
       <div class="container position-relative d-flex align-items-center justify-content-end">
-        <br href="index.html" class="logo d-flex align-items-center me-auto">
+        <br  href="index.html" class="logo d-flex align-items-center me-auto">
           <img src="assets/img/testimonials/logo.png" alt="">
         
-        </a>
+      </br>
 
         <nav id="navmenu" class="navmenu">
           <ul>
@@ -97,7 +97,7 @@
           <div class="container">
             <h2>Your Trusted Healthcare Partner</h2>
             <p>Discover the warmth and expertise at Meru Doctors' Plaza. We are dedicated to your well-being, providing exceptional healthcare services with a commitment to excellence. Explore our passion for your health and care.</p>
-            <a href="#about" class="btn-get-started">Read More</a>
+            <a href="#services" class="btn-get-started">Read More</a>
           </div>
         </div><!-- End Carousel Item -->
 
@@ -338,6 +338,7 @@
                       <option value="" >Cardiology</option>
                       <option value="">Neurology</option>
                       <option value="">Hepatology</option>
+                      <option value="">Denstist</option>
                   </select>
                   </div>
                   <div class="col-md-4 form-group mt-3">
@@ -367,6 +368,49 @@
                   <button type="submit">Make an Appointment</button>
               </div>
           </form>
+          <section id="appointment" class="appointment section-bg">
+            <div class="container" data-aos="fade-up">
+      
+                <div class="section-title">
+                  <h2>Buy Medicine at Meru Doctors' Plaza</h2>
+                  <p>Purchase your medicine from Meru Doctors' Plaza at both wholesale and retail rates. We provide quality pharmaceutical products to meet your health needs. Contact us for more information, and our team will assist you promptly.</p>
+                  
+                </div>
+      
+                <form method="post" action="" role="form" class="php-email-form" data-aos="fade-up"
+                      data-aos-delay="100">
+                    
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            <label for="name"></label><input type="text" name="name" class="form-control" id="name"
+                                                             placeholder="Your Name" required autocomplete="name">
+                        </div>
+                        <div class="col-md-4 form-group mt-3 mt-md-0">
+                            <label for="email"></label><input type="email" class="form-control" name="email" id="email"
+                                                              placeholder="Your Email" required autocomplete="email">
+                        </div>
+                        <div class="col-md-4 form-group mt-3 mt-md-0">
+                            <label for="phone"></label><input type="tel" class="form-control" name="phone" id="phone"
+                                                              placeholder="Your Phone" required autocomplete="tel">
+                        </div>
+                    </div>
+      
+                    <div class="form-group mt-3">
+                        <label>
+                            <textarea class="form-control" name="message" rows="5" placeholder="Send your Order"
+                                      autocomplete="off" required></textarea>
+                        </label>
+                    </div>
+                    <div class="my-3">
+                        <div class="loading">Loading</div>
+                        <div class="error-message"></div>
+                        <div class="sent-message">Your order request has been sent successfully. Thank you!</div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit">Buy medicines</button>
+                    </div>
+                </form>
+      
 
 
       </div>
@@ -397,10 +441,23 @@
               <p>Specialized neurological services.</p>
             </a>
           </li>
+          <li class="nav-item mt-2"></li>
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-patho">
+              <h4>Pathology</h4>
+              <p>Specialized Pathology.</p>
+            </a>
+          </li>
+
           <li class="nav-item mt-2">
             <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-hepatology">
               <h4>Hepatology</h4>
               <p>Expertise in liver-related conditions.</p>
+            </a>
+          </li>
+          <li class="nav-item mt-2"></li>
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-dentist">
+              <h4>Dentist</h4>
+              <p>Health teeth and fresh Breath.</p>
             </a>
           </li>
           <li class="nav-item mt-2">
@@ -435,6 +492,20 @@
             <p class="fst-italic"> Expertise in liver-related conditions.</p>
             <img src="assets/img/departments-3.jpg" alt="Hepatology Department" class="img-fluid">
             <p>Experience quality care for liver-related conditions in our Hepatology department. Our hepatologists are skilled in diagnosing and treating various liver disorders.</p>
+          </div>
+          <!-- dentist Tab -->
+          <div class="tab-pane" id="tab-dentist">
+            <h3>Dentist</h3>
+            <p class="fst-italic"> Dental care.</p>
+            <img src="assets/img/departments-6.jpg" alt="Hepatology Department" class="img-fluid">
+            <p>From routine check-ups to advanced treatments, we offer comprehensive dental services in a comfortable and welcoming environment</p>
+          </div>
+          <!-- pathology Tab -->
+          <div class="tab-pane" id="tab-patho">
+            <h3>Dentist</h3>
+            <p class="fst-italic"> Pathology.</p>
+            <img src="assets/img/pathology.jpeg" alt="Hepatology Department" class="img-fluid">
+            <p>From routine check-ups to advanced treatments, we offer comprehensive dental services in a comfortable and welcoming environment</p>
           </div>
 
           <!-- Pediatrics Tab -->
@@ -810,7 +881,7 @@
       </div><!-- End Section Title -->
 
       <div class="mb-5" data-aos="fade-up" data-aos-delay="200">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15959.268333963459!2d37.655057!3d0.0451149!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x178821ea25e67a7d%3A0xcaef0f8a3fc108b0!2sMeru%20Doctors%20Plaza%20Ltd!5e0!3m2!1sen!2ske!4v1707987751672!5m2!1sen!2ske" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15959.268333963459!2d37.655057!3d0.0451149!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x178821ea25e67a7d%3A0xcaef0f8a3fc108b0!2sMeru%20Doctors%20Plaza%20Ltd!5e0!3m2!1sen!2ske!4v1707987751672!5m2!1sen!2ske" width="1400" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div><!-- End Google Maps -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
