@@ -1,3 +1,70 @@
+<?php
+session_start();
+
+// Check if the user is logged in
+if (!isset($_SESSION['email'])) {
+    header("Location: login.php"); // Redirect to login if not logged in
+    exit();
+}
+
+// Database connection
+$host = 'localhost';
+$dbname = 'meru doctors plaza';
+$user = 'root';
+$pass = '';
+
+$conn = new mysqli($host, $user, $pass, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Fetch the current user's ID (super admin check)
+$email = $_SESSION['email'];
+$stmt = $conn->prepare("SELECT id FROM members WHERE email = ?");
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$stmt->bind_result($admin_id);
+$stmt->fetch();
+$stmt->close();
+
+// Check if the current user is the super admin (ID = 1)
+$is_super_admin = ($admin_id == 1);
+
+// Handle form submission (only if the user is the super admin)
+if ($_SERVER["REQUEST_METHOD"] == "POST" && $is_super_admin) {
+    $email = $_POST['email'];
+    $national_id = $_POST['national_id'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash the password
+
+    // Check if email already exists
+    $check_email = $conn->prepare("SELECT * FROM members WHERE email = ?");
+    $check_email->bind_param("s", $email);
+    $check_email->execute();
+    $result = $check_email->get_result();
+
+    if ($result->num_rows > 0) {
+        echo "<p class='error'>Email already exists!</p>";
+    } else {
+        // Insert new member
+        $stmt = $conn->prepare("INSERT INTO members (email, national_id, password) VALUES (?, ?, ?)");
+        $stmt->bind_param("sss", $email, $national_id, $password);
+
+        if ($stmt->execute()) {
+            echo "<p class='success'>Registration successful!</p>";
+        } else {
+            echo "<p class='error'>Error: " . $stmt->error . "</p>";
+        }
+
+        $stmt->close();
+    }
+
+    $check_email->close();
+}
+
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,61 +135,21 @@
 
 <body>
 
-<div class="col-lg-6"><h1>Admin Registration</h1>
-    <form method="post" action="register.php">
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="text" name="national_id" placeholder="National ID" required>
-        <input type="password" name="password" placeholder="Password (min 8 characters)" required minlength="8">
-        <button type="submit">Register</button>
-    </form>
-    <center><a href="admin-appointment.php">Go Back</a></center>
+<?php if ($is_super_admin): // Only show the form if the user is the super admin ?>
+    <div class="col-lg-6">
+        <h2>Admin Registration</h2>
+        <form method="post" action="">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="national_id" placeholder="National ID" required>
+            <input type="password" name="password" placeholder="Password (min 8 characters)" required minlength="8">
+            <button type="submit">Register</button>
+        </form>
+        <center><a href="admin-appointment.php">Go Back</a></center>
+    </div>
+<?php else: ?>
+    <p style="color: red;">You do not have permission to access this page.</p>
+<?php endif; ?>
 
-    <?php
-    // Database connection
-    $host = 'localhost';
-    $dbname = 'meru doctors plaza';
-    $user = 'root';
-    $pass = '';
-
-    $conn = new mysqli($host, $user, $pass, $dbname);
-
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    // Handle form submission
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $email = $_POST['email'];
-        $national_id = $_POST['national_id'];
-        $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash the password
-
-        // Check if email already exists
-        $check_email = $conn->prepare("SELECT * FROM members WHERE email = ?");
-        $check_email->bind_param("s", $email);
-        $check_email->execute();
-        $result = $check_email->get_result();
-
-        if ($result->num_rows > 0) {
-            echo "<p class='error'>Email already exists!</p>";
-        } else {
-            // Insert new admin
-            $stmt = $conn->prepare("INSERT INTO members (email, national_id, password) VALUES (?, ?, ?)");
-            $stmt->bind_param("sss", $email, $national_id, $password);
-
-            if ($stmt->execute()) {
-                echo "<p class='success'>Registration successful!</p>";
-            } else {
-                echo "<p class='error'>Error: " . $stmt->error . "</p>";
-            }
-
-            $stmt->close();
-        }
-
-        $check_email->close();
-    }
-
-    $conn->close();
-    ?>
 </body>
 
 </html>
