@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Meru Doctors Plaza</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full height for centering */
+            margin: 0; /* Remove default margin */
+        }
+
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px; /* Set a fixed width for the form */
+        }
+
+        h2 {
+            text-align: center; /* Center the heading */
+            color: #007bff; /* Blue color for the heading */
+            margin-bottom: 20px; /* Space between heading and form */
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007bff; /* Blue button color */
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%; /* Full width for the button */
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+
+        .success {
+            color: green;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+
+<body>
+<div class="col-lg-6"><h1>Admin Login</h1>
+    <form method="post" action="login.php">
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
+    <center><a href="index.html">Home</a></center>
+
+    <?php
+    session_start(); // Start a session to store user data
+
+    // Database connection
+    $host = 'localhost';
+    $dbname = 'meru doctors plaza';
+    $user = 'root';
+    $pass = '';
+
+    $conn = new mysqli($host, $user, $pass, $dbname);
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Handle form submission
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        // Prepare and execute query
+        $stmt = $conn->prepare("SELECT password FROM members WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $stmt->store_result();
+
+        if ($stmt->num_rows > 0) {
+            $stmt->bind_result($hashed_password);
+            $stmt->fetch();
+
+            // Verify the password
+            if (password_verify($password, $hashed_password)) {
+                // Set session variables for the logged-in user
+                $_SESSION['email'] = $email;
+                echo "<p class='success'>Login successful!</p>";
+                // Redirect to the admin dashboard or desired page
+                header("Location: admin-appointment.php");
+                exit();
+            } else {
+                echo "<p class='error'>Invalid password!</p>";
+            }
+        } else {
+            echo "<p class='error'>No account found with that email!</p>";
+        }
+
+        $stmt->close();
+    }
+
+    $conn->close();
+    ?>
+</body>
+
+</html>
