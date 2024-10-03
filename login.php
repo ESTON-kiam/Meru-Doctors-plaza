@@ -7,16 +7,18 @@
     <title>Admin Login - Meru Doctors Plaza</title>
     <style>
         body {
+            
             font-family: Arial, sans-serif;
             background-color: #f2f2f2;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh; /* Full height for centering */
-            margin: 0; /* Remove default margin */
+            height: 100vh; 
+            margin: 0; 
         }
 
         form {
+           
             background-color: white;
             padding: 20px;
             border-radius: 5px;
@@ -40,17 +42,18 @@
         }
 
         button {
-            background-color: #007bff; /* Blue button color */
+           
+            background-color: #007bff; 
             color: white;
             padding: 10px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            width: 100%; /* Full width for the button */
+            width: 100%; 
         }
 
         button:hover {
-            background-color: #0056b3; /* Darker blue on hover */
+            background-color: #0056b3;
         }
 
         .error {
@@ -75,7 +78,7 @@
     <center><a href="index.html">Home</a></center>
 
     <?php
-    session_start(); // Start a session to store user data
+    session_start();
 
     // Database connection
     $host = 'localhost';
@@ -89,12 +92,11 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Handle form submission
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        // Prepare and execute query
+        
         $stmt = $conn->prepare("SELECT password FROM members WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
