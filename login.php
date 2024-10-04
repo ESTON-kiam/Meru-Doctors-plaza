@@ -75,7 +75,7 @@
         <input type="password" name="password" placeholder="Password" required>
         <button type="submit">Login</button>
     </form>
-    <center><a href="index.php">Home</a></center>
+    <center><a href="index.html">Home</a></center>
 
     <?php
     session_start();
