@@ -28,60 +28,7 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 </head>
-<style>
-    /* Styles for dropdown */
-    .dropdown-btn {
-      background-color: #007bff;
-      color: white;
-      padding: 14px 16px;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-    }
 
-    .dropdown-btn:hover {
-      background-color: #0056b3;
-    }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: white;
-      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-      z-index: 1;
-      width: 160px;
-    }
-
-    .dropdown-content a {
-      color: black;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-    }
-
-    .dropdown-content a:hover {
-      background-color: #f1f1f1;
-    }
-
-    /* Ensures dropdown is positioned correctly within the nav */
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
-
-    /* Table styling */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    table, th, td {
-      border: 1px solid black;
-    }
-    th, td {
-      padding: 10px;
-      text-align: left;
-    }
-  </style>
 <body class="index-page">
 
   <header id="header" class="header sticky-top">
@@ -198,26 +145,7 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
-  <script>
-    // Toggle dropdown on click
-    document.addEventListener('DOMContentLoaded', function() {
-      var dropdownBtn = document.querySelector('.dropdown-btn');
-      var dropdownContent = document.querySelector('.dropdown-content');
-
-      dropdownBtn.addEventListener('click', function() {
-        dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
-      });
-
-      // Close the dropdown if clicked outside
-      window.onclick = function(event) {
-        if (!event.target.matches('.dropdown-btn')) {
-          if (dropdownContent.style.display === 'block') {
-            dropdownContent.style.display = 'none';
-          }
-        }
-      };
-    });
-  </script>
+ 
 
 </body>
 

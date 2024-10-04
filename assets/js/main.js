@@ -1,10 +1,22 @@
-/**
-* Template Name: Medicio
-* Template URL: https://bootstrapmade.com/medicio-free-bootstrap-theme/
-* Updated: Aug 07 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+
+// Toggle dropdown on click
+document.addEventListener('DOMContentLoaded', function() {
+  var dropdownBtn = document.querySelector('.dropdown-btn');
+  var dropdownContent = document.querySelector('.dropdown-content');
+
+  dropdownBtn.addEventListener('click', function() {
+    dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+  });
+
+  // Close the dropdown if clicked outside
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropdown-btn')) {
+      if (dropdownContent.style.display === 'block') {
+        dropdownContent.style.display = 'none';
+      }
+    }
+  };
+});
 
 (function() {
   "use strict";
