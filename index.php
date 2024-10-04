@@ -66,7 +66,7 @@
             <li><a href="#departments">Departments</a></li>
             <li><a href="#doctors">Doctors</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="login.php">Admin login</a></li>
+            <li><a href="login.php"><button>Admin login</button></a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -371,9 +371,9 @@
                   </label>
               </div>
               <div class="my-3">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="success-message">Your appointment request has been sent successfully. Thank you!</div>
+              <div class="loading">Loading</div>
+                        <div class="success-message"></div>
+                        <div class="sent-message">Your Appointment request has been sent successfully. Thank you!</div>
               </div>
               <div class="text-center">
                   <button type="submit">Make an Appointment</button>
