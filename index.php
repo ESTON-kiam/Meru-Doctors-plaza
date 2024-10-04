@@ -5,13 +5,16 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta name="Open Hours" content="Monday-24hrs TUESDAY-24hrs WEDNESDAY-24hrs THURSDAY-24hrs FRIDAY-24hrs SATURDAY-24hrs Sunday-24hrs">
-  <title>Meru Doctors' Plaza</title>
+  <meta name="Author" content="Eston Kiama">
+ <title>Meru Doctors' Plaza</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/favicon.png" rel="apple-touch-icon">
+
+
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -50,7 +53,7 @@
     <div class="branding d-flex align-items-center">
 
       <div class="container position-relative d-flex align-items-center justify-content-end">
-        <br  href="index.html" class="logo d-flex align-items-center me-auto">
+        <br  href="index.php" class="logo d-flex align-items-center me-auto">
           <img src="assets/img/testimonials/logo.png" alt="">
         
       </br>
@@ -67,7 +70,7 @@
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
-<a class="cta-btn" href="index.html#appointment">Make an Appointment</a>
+<a class="cta-btn" href="index.php#appointment">Make an Appointment</a>
 
       </div>
 
@@ -1143,7 +1146,7 @@
     <div class="container footer-top">
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6 footer-about">
-          <a href="index.html" class="logo d-flex align-items-center">
+          <a href="index.php" class="logo d-flex align-items-center">
             <span class="sitename">Meru Doctors' Plaza</span>
           </a>
           <div class="footer-contact pt-3">
@@ -1159,7 +1162,10 @@
             <a href=""><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
-       </div></div>
+       </div>
+    
+    
+</div></div>
 
     <div class="container copyright text-center mt-4">
       <p>© <span>Copyright</span> <strong class="px-1 sitename">2024</strong> <span>All Rights Reserved</span></p>

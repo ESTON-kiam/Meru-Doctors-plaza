@@ -53,26 +53,47 @@ $result = $conn->query($sql);
                 <th>ID</th>
                 <th>Email</th>
                 <th>National ID</th>
+                <th>Action</th> <!-- Add action column for delete button -->
             </tr>
         </thead>
         <tbody>
-            <?php
-            if ($result->num_rows > 0) {
-                // Output data of each row
-                while($row = $result->fetch_assoc()) {
-                    echo "<tr>";
-                    echo "<td>" . $row['id'] . "</td>";
-                    echo "<td>" . $row['email'] . "</td>";
-                    echo "<td>" . $row['national_id'] . "</td>";
-                    echo "</tr>";
+        <?php
+        session_start(); // Start a session to track logged-in user
+
+        // For demonstration purposes, let's assume you have already stored the logged-in user's ID in the session
+        // In real application, you'll retrieve this from the login system
+        $_SESSION['user_id'] = 1; // Super admin ID for now
+
+        if ($result->num_rows > 0) {
+            // Output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo "<tr>";
+                echo "<td>" . $row['id'] . "</td>";
+                echo "<td>" . $row['email'] . "</td>";
+                echo "<td>" . $row['national_id'] . "</td>";
+
+                // Only show the delete button if the logged-in user is the super admin (id = 1)
+                if ($_SESSION['user_id'] == 1) {
+                    echo "<td>";
+                    echo "<form method='POST' action='delete_admin.php'>";
+                    echo "<input type='hidden' name='admin_id' value='" . $row['id'] . "' />";
+                    echo "<button type='submit' onclick='return confirm(\"Are you sure you want to delete this member?\")'>Delete</button>";
+                    echo "</form>";
+                    echo "</td>";
+                } else {
+                    echo "<td>No action available</td>";
                 }
-            } else {
-                echo "<tr><td colspan='3'>No members found</td></tr>";
+
+                echo "</tr>";
             }
-            ?>
+        } else {
+            echo "<tr><td colspan='4'>No members found</td></tr>";
+        }
+        ?>
+
         </tbody>
     </table>
-
+<a href="admin-appointment.php"><center>Go Back</center></a>
 </body>
 </html>
 
