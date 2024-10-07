@@ -1,3 +1,41 @@
+<?php
+session_start();
+
+// Check if the user is logged in
+if (!isset($_SESSION['email'])) {
+    header("Location: login.php"); // Redirect to login if not logged in
+    exit();
+}
+
+// Database connection
+$host = 'localhost';
+$dbname = 'meru doctors plaza';
+$user = 'root';
+$pass = '';
+
+$conn = new mysqli($host, $user, $pass, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Fetch the current user's details, including profile picture
+$email = $_SESSION['email'];
+$stmt = $conn->prepare("SELECT profile_picture FROM members WHERE email = ?");
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$stmt->bind_result($profile_picture);
+$stmt->fetch();
+$stmt->close();
+
+// Default profile picture if not set
+if (empty($profile_picture)) {
+    $profile_picture = 'uploads/profile_pictures/default.png'; // Ensure you have a default image
+}
+
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,11 +65,6 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
-
- 
-   
- 
-  
 </head>
 
 <body class="index-page">
@@ -63,7 +96,11 @@
             
             <!-- Profile dropdown -->
             <li class="dropdown">
-              <button class="dropdown-btn">Profile</button>
+              <button class="dropdown-btn">
+                <!-- Display profile picture -->
+                <img src="<?php echo $profile_picture; ?>" alt="Profile Picture" style="width: 30px; height: 30px; border-radius: 50%; vertical-align: middle;">
+                Profile
+              </button>
               <div class="dropdown-content">
                 <a href="view_profile.php">View Profile</a>
                 <a href="edit_profile.php">Edit Profile</a>
@@ -151,8 +188,5 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
-
-      
-
 </body>
 </html>

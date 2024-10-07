@@ -58,7 +58,11 @@
             <li><a href="Register.php">Register new member</a></li>
              <!-- Profile dropdown -->
              <li class="dropdown">
-              <button class="dropdown-btn">Profile</button>
+              <button class="dropdown-btn">
+                <!-- Display profile picture -->
+                <img src="<?php echo $profile_picture; ?>" alt="Profile Picture" style="width: 30px; height: 30px; border-radius: 50%; vertical-align: middle;">
+                Profile
+              </button>
               <div class="dropdown-content">
                 <a href="view_profile.php">View Profile</a>
                 <a href="edit_profile.php">Edit Profile</a>

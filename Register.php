@@ -36,6 +36,51 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $is_super_admin) {
     $email = $_POST['email'];
     $national_id = $_POST['national_id'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash the password
+    
+    // Handling file upload for the profile picture
+    if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] == 0) {
+        // Set the target directory for uploads
+        $target_dir = "uploads/profile_pictures/";
+        
+        // Generate a unique file name to avoid conflicts
+        $file_name = basename($_FILES['profile_picture']['name']);
+        $target_file = $target_dir . time() . '_' . $file_name;
+        $uploadOk = 1;
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+        // Check if image file is an actual image or fake
+        $check = getimagesize($_FILES['profile_picture']['tmp_name']);
+        if ($check !== false) {
+            $uploadOk = 1;
+        } else {
+            echo "<p class='error'>File is not an image.</p>";
+            $uploadOk = 0;
+        }
+
+        // Check file size (max size 2MB)
+        if ($_FILES['profile_picture']['size'] > 2000000) {
+            echo "<p class='error'>Sorry, your file is too large. Max size 2MB.</p>";
+            $uploadOk = 0;
+        }
+
+        // Allow only certain file formats
+        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
+            echo "<p class='error'>Sorry, only JPG, JPEG & PNG files are allowed.</p>";
+            $uploadOk = 0;
+        }
+
+        // Check if $uploadOk is set to 0 by an error
+        if ($uploadOk == 0) {
+            echo "<p class='error'>Sorry, your file was not uploaded.</p>";
+        } else {
+            // Try to upload file
+            if (move_uploaded_file($_FILES['profile_picture']['tmp_name'], $target_file)) {
+                echo "<p class='success'>Profile picture uploaded successfully.</p>";
+            } else {
+                echo "<p class='error'>Sorry, there was an error uploading your file.</p>";
+            }
+        }
+    }
 
     // Check if email already exists
     $check_email = $conn->prepare("SELECT * FROM members WHERE email = ?");
@@ -46,9 +91,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $is_super_admin) {
     if ($result->num_rows > 0) {
         echo "<p class='error'>Email already exists!</p>";
     } else {
-        // Insert new member
-        $stmt = $conn->prepare("INSERT INTO members (email, national_id, password) VALUES (?, ?, ?)");
-        $stmt->bind_param("sss", $email, $national_id, $password);
+        // Insert new member including the profile picture path if it was uploaded successfully
+        $stmt = $conn->prepare("INSERT INTO members (email, national_id, password, profile_picture) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $email, $national_id, $password, $target_file);
 
         if ($stmt->execute()) {
             echo "<p class='success'>Registration successful!</p>";
@@ -99,7 +144,8 @@ $conn->close();
 
         input[type="text"],
         input[type="email"],
-        input[type="password"] {
+        input[type="password"],
+        input[type="file"] {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
@@ -138,10 +184,11 @@ $conn->close();
 <?php if ($is_super_admin): // Only show the form if the user is the super admin ?>
     <div class="col-lg-6">
         <h2>Admin Registration</h2>
-        <form method="post" action="">
+        <form method="post" action="" enctype="multipart/form-data">
             <input type="email" name="email" placeholder="Email" required>
             <input type="text" name="national_id" placeholder="National ID" required>
             <input type="password" name="password" placeholder="Password (min 8 characters)" required minlength="8">
+            <input type="file" name="profile_picture" accept="image/*" required> <!-- File upload input for profile picture -->
             <button type="submit">Register</button>
         </form>
         <center><a href="admin-appointment.php">Go Back</a></center>
