@@ -21,26 +21,52 @@ if ($conn->connect_error) {
 
 // Fetch user profile data
 $email = $_SESSION['email'];
-$stmt = $conn->prepare("SELECT national_id FROM members WHERE email = ?");
+$stmt = $conn->prepare("SELECT national_id, profile_picture FROM members WHERE email = ?");
 $stmt->bind_param("s", $email);
 $stmt->execute();
-$stmt->bind_result($national_id);
+$stmt->bind_result($national_id, $current_profile_picture);
 $stmt->fetch();
 $stmt->close();
+
+$update_message = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Update profile data
     $new_national_id = $_POST['national_id'];
-    
-    // Update the national ID in the database
-    $stmt = $conn->prepare("UPDATE members SET national_id = ? WHERE email = ?");
-    $stmt->bind_param("ss", $new_national_id, $email);
-    $stmt->execute();
-    $stmt->close();
+    $profile_picture = $current_profile_picture; // Default to current profile picture
 
-    // Redirect to view profile after updating
-    header("Location: view_profile.php");
-    exit();
+    // Check if a new profile picture is uploaded
+    if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] == 0) {
+        // File upload settings
+        $target_dir = "uploads/profile_pictures/";
+        $file_name = uniqid() . '_' . basename($_FILES['profile_picture']['name']);
+        $target_file = $target_dir . $file_name;
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+        // Validate file type (allow only image types)
+        $valid_extensions = array("jpg", "jpeg", "png", "gif");
+        if (in_array($imageFileType, $valid_extensions)) {
+            // Move the uploaded file to the target directory
+            if (move_uploaded_file($_FILES['profile_picture']['tmp_name'], $target_file)) {
+                // Save the file path in the database
+                $profile_picture = $target_file;
+            } else {
+                $update_message = "Error uploading the file.";
+            }
+        } else {
+            $update_message = "Only image files (JPG, JPEG, PNG, GIF) are allowed.";
+        }
+    }
+
+    // Update the national ID and profile picture in the database
+    $stmt = $conn->prepare("UPDATE members SET national_id = ?, profile_picture = ? WHERE email = ?");
+    $stmt->bind_param("sss", $new_national_id, $profile_picture, $email);
+    if ($stmt->execute()) {
+        $update_message = "Profile updated successfully!";
+    } else {
+        $update_message = "Error updating profile: " . $conn->error;
+    }
+    $stmt->close();
 }
 
 $conn->close();
@@ -71,7 +97,7 @@ $conn->close();
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        input[type="text"] {
+        input[type="text"], input[type="file"] {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
@@ -92,16 +118,27 @@ $conn->close();
         button:hover {
             background-color: #0056b3; /* Darker blue on hover */
         }
+
+        .message {
+            color: #007bff;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 
 <body>
 
     <h2>Edit Profile</h2>
-    <form method="post" action="edit_profile.php">
+    <?php if (!empty($update_message)): ?>
+        <p class="message"><?php echo htmlspecialchars($update_message); ?></p>
+    <?php endif; ?>
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data">
         <input type="text" name="national_id" placeholder="National ID" value="<?php echo htmlspecialchars($national_id); ?>" required>
+        <input type="file" name="profile_picture" accept="image/*">
         <button type="submit">Update Profile</button>
     </form>
+    <center><a href="admin-appointment.php">Go back</a></center>
 
 </body>
 

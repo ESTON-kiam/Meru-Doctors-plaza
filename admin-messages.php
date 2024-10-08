@@ -1,3 +1,40 @@
+<?php
+session_start();
+
+// Check if the user is logged in
+if (!isset($_SESSION['email'])) {
+    header("Location: login.php"); // Redirect to login if not logged in
+    exit();
+}
+
+// Database connection
+$host = 'localhost';
+$dbname = 'meru doctors plaza';
+$user = 'root';
+$pass = '';
+
+$conn = new mysqli($host, $user, $pass, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Fetch the current user's details, including profile picture
+$email = $_SESSION['email'];
+$stmt = $conn->prepare("SELECT profile_picture FROM members WHERE email = ?");
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$stmt->bind_result($profile_picture);
+$stmt->fetch();
+$stmt->close();
+
+// Default profile picture if not set
+if (empty($profile_picture)) {
+    $profile_picture = 'uploads/profile_pictures/default.png'; // Ensure you have a default image
+}
+
+$conn->close();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,7 +98,8 @@
             <li><a href="admin-messages.php">Messages</a></li>
             <li><a href="Register.php">Register new member</a></li>
              <!-- Profile dropdown -->
-             <li class="dropdown">
+             <!-- Profile dropdown -->
+            <li class="dropdown">
               <button class="dropdown-btn">
                 <!-- Display profile picture -->
                 <img src="<?php echo $profile_picture; ?>" alt="Profile Picture" style="width: 30px; height: 30px; border-radius: 50%; vertical-align: middle;">
@@ -74,6 +112,7 @@
                 <a href="logout.php">Logout</a>
               </div>
             </li>
+           
             <li><a href="members.php">Members</li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
