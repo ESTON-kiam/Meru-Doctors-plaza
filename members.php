@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 }
 
 // Fetch all members
-$sql = "SELECT id, email, national_id FROM members";
+$sql = "SELECT id, email, national_id, profile_picture FROM members";
 $result = $conn->query($sql);
 ?>
 
@@ -42,6 +42,13 @@ $result = $conn->query($sql);
             background-color: #007bff;
             color: white;
         }
+
+        img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
     </style>
 </head>
 <body>
@@ -53,6 +60,7 @@ $result = $conn->query($sql);
                 <th>ID</th>
                 <th>Email</th>
                 <th>National ID</th>
+                <th>Profile Picture</th> <!-- Add profile picture column -->
                 <th>Action</th> <!-- Add action column for delete button -->
             </tr>
         </thead>
@@ -71,6 +79,10 @@ $result = $conn->query($sql);
                 echo "<td>" . $row['id'] . "</td>";
                 echo "<td>" . $row['email'] . "</td>";
                 echo "<td>" . $row['national_id'] . "</td>";
+                
+                // Check if the profile picture exists, else display a default image
+                $profilePicture = !empty($row['profile_picture']) ? $row['profile_picture'] : 'default-profile.png';
+                echo "<td><img src='" . $profilePicture . "' alt='Profile Picture'></td>"; // Display profile picture
 
                 // Check if the current member ID is not 1 before showing the delete button
                 if ($_SESSION['user_id'] == 1 && $row['id'] != 1) {
@@ -87,7 +99,7 @@ $result = $conn->query($sql);
                 echo "</tr>";
             }
         } else {
-            echo "<tr><td colspan='4'>No members found</td></tr>";
+            echo "<tr><td colspan='5'>No members found</td></tr>"; // Adjust colspan to 5 due to added column
         }
         ?>
         </tbody>

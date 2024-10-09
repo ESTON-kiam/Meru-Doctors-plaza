@@ -118,7 +118,12 @@ $conn->close();
     </div>
   </header>
 
-  <main class="main">
+  <main class="main"><body class="index-page">
+  <header id="header" class="header sticky-top">
+    <!-- (header content remains the same) -->
+  </header>
+
+  
     <h1>Appointment List</h1>
     <table border="1">
       <thead>
@@ -132,13 +137,50 @@ $conn->close();
           <th>Doctor</th>
           <th>Message</th>
           <th>Created At</th>
+          <th>Comment</th> <!-- New column for comments -->
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
-        <?php include 'fetch_appointments.php'; ?>
-      </tbody>
+  <?php include 'fetch_appointments.php'; ?>
+
+  <!-- Display appointment data with comment form and delete button for each entry -->
+  <?php
+  foreach ($appointment as $appointment) {
+      echo "<tr>";
+      echo "<td>" . $appointment['id'] . "</td>";
+      echo "<td>" . $appointment['name'] . "</td>";
+      echo "<td>" . $appointment['national_id'] . "</td>";
+      echo "<td>" . $appointment['phone'] . "</td>";
+      echo "<td>" . $appointment['appointment_date'] . "</td>";
+      echo "<td>" . $appointment['department'] . "</td>";
+      echo "<td>" . $appointment['doctor'] . "</td>";
+      echo "<td>" . $appointment['message'] . "</td>";
+      echo "<td>" . $appointment['created_at'] . "</td>";
+
+      echo "<td>";
+      echo "<form method='POST' action='save_comment.php'>";
+      echo "<textarea name='comment'>" . $appointment['comment'] . "</textarea>";
+      echo "<input type='hidden' name='appointment_id' value='" . $appointment['id'] . "' />";
+      echo "<button type='submit'>Save Comment</button>";
+      echo "</form>";
+      echo "</td>";
+
+      // Add a delete form for each appointment
+      echo "<td>";
+      echo "<form method='POST' action='delete_appointment.php'>";
+      echo "<input type='hidden' name='appointment_id' value='" . $appointment['id'] . "' />";
+      echo "<button type='submit' onclick=\"return confirm('Are you sure you want to delete this appointment?');\">Delete</button>";
+      echo "</form>";
+      echo "</td>";
+
+      echo "</tr>";
+  }
+  ?>
+</tbody>
+
     </table>
+
   </main>
 
   <footer id="footer" class="footer light-background">
