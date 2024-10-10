@@ -31,13 +31,13 @@ function sendPasswordChangeEmail($email) {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com'; 
         $mail->SMTPAuth = true;
-        $mail->Username = 'engestonbrandon@gmail.com'; 
-        $mail->Password = 'whfg mqtm seqk qwye'; 
+        $mail->Username = ''; 
+        $mail->Password = ''; 
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
         // Recipients
-        $mail->setFrom('engestonbrandon@gmail.com', 'Meru Doctors Plaza');
+        $mail->setFrom('', 'Meru Doctors Plaza');
         $mail->addAddress($email);
 
         // Email content
