@@ -1,13 +1,13 @@
 <?php
-session_start(); // Start the session
+session_start(); 
 
-// Check if the user is the super admin
+
 if ($_SESSION['user_id'] != 1) {
     echo "You do not have permission to delete members.";
     exit();
 }
 
-// Database connection
+
 $host = 'localhost';
 $dbname = 'meru doctors plaza';
 $user = 'root';
@@ -19,11 +19,11 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Check if admin_id is set
+
 if (isset($_POST['admin_id'])) {
     $admin_id = $conn->real_escape_string($_POST['admin_id']);
 
-    // Delete the admin from the members table
+ 
     $sql = "DELETE FROM members WHERE id = $admin_id";
 
     if ($conn->query($sql) === TRUE) {

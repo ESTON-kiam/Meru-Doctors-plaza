@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-// Check if the user is logged in
+// Ensure the user is logged in
 if (!isset($_SESSION['email'])) {
-    header("Location: login.php"); // Redirect to login if not logged in
+    header("Location: login.php"); 
     exit();
 }
 
@@ -14,17 +14,52 @@ $user = 'root';
 $pass = '';
 
 $conn = new mysqli($host, $user, $pass, $dbname);
-
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// Load PHPMailer
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+require 'vendor/autoload.php';  
+
+
+function sendPasswordChangeEmail($email) {
+    $mail = new PHPMailer(true);
+    try {
+        // Server settings
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com'; 
+        $mail->SMTPAuth = true;
+        $mail->Username = 'engestonbrandon@gmail.com'; 
+        $mail->Password = 'whfg mqtm seqk qwye'; 
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
+
+        // Recipients
+        $mail->setFrom('engestonbrandon@gmail.com', 'Meru Doctors Plaza');
+        $mail->addAddress($email);
+
+        // Email content
+        $mail->isHTML(true);
+        $mail->Subject = 'Password Changed Successfully';
+        $mail->Body    = 'Dear user,<br><br>Your password has been changed successfully.<br><br>If you did not initiate this change, please contact support immediately.<br><br>Regards,<br>Meru Doctors Plaza';
+
+        // Send the email
+        $mail->send();
+        echo 'Email has been sent successfully';
+    } catch (Exception $e) {
+        echo "Email could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    }
+}
+
+// Handle password change form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_SESSION['email'];
     $current_password = $_POST['current_password'];
     $new_password = $_POST['new_password'];
 
-    // Prepare and execute query to get the current password
+    // Fetch the current password hash from the database
     $stmt = $conn->prepare("SELECT password FROM members WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -33,16 +68,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Verify the current password
     if (password_verify($current_password, $hashed_password)) {
-        // Hash the new password and update in the database
+        // Hash the new password and update the database
         $new_hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
         $stmt->close();
-        
+
         $stmt = $conn->prepare("UPDATE members SET password = ? WHERE email = ?");
         $stmt->bind_param("ss", $new_hashed_password, $email);
-        $stmt->execute();
+        if ($stmt->execute()) {
+            // Send email notification
+            sendPasswordChangeEmail($email);
+            echo "<p class='success'>Password changed successfully!</p>";
+        } else {
+            echo "<p class='error'>Error updating password!</p>";
+        }
         $stmt->close();
-
-        echo "<p class='success'>Password changed successfully!</p>";
     } else {
         echo "<p class='error'>Current password is incorrect!</p>";
     }
@@ -58,11 +97,12 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Change Password - Meru Doctors Plaza</title>
+    <link href="assets/css/main.css" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f2f2f2;
-            height: 100vh; /* Full viewport height */
+            height: 100vh; 
             margin: 0;
             display: flex;
             justify-content: center;
@@ -70,7 +110,7 @@ $conn->close();
         }
 
         h2 {
-            color: #007bff; /* Blue color for heading */
+            color: #007bff; 
             text-align: center;
         }
 
@@ -80,7 +120,7 @@ $conn->close();
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 400px; /* Set a maximum width for the form */
+            max-width: 400px; 
         }
 
         input[type="password"] {
