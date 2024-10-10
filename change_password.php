@@ -154,6 +154,7 @@ $conn->close();
             color: green;
             text-align: center;
         }
+       
     </style>
 </head>
 
@@ -164,7 +165,11 @@ $conn->close();
         <input type="password" name="current_password" placeholder="Current Password" required>
         <input type="password" name="new_password" placeholder="New Password" required>
         <button type="submit">Change Password</button>
-    </form>
+    </form><br>
+   
+    <a href="admin-appointment.php" style="text-align: center; margin: top 295px;">Dashboard</a>
+
+
 
 </body>
 
