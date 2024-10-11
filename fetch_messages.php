@@ -1,11 +1,9 @@
 <?php
-// fetch_messages.php
 
-// Database connection
 $host = 'localhost';
-$dbname = 'meru doctors plaza'; // Your database name
-$user = 'root'; // Database username
-$pass = ''; // Database password
+$dbname = 'meru doctors plaza'; 
+$user = 'root'; 
+$pass = ''; 
 
 $conn = new mysqli($host, $user, $pass, $dbname);
 
@@ -13,8 +11,8 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Fetch all messages
-$sql = "SELECT * FROM contact ORDER BY date_sent DESC"; // Assuming created_at column exists
+
+$sql = "SELECT * FROM contact ORDER BY date_sent DESC"; 
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -37,7 +35,7 @@ if ($result->num_rows > 0) {
               </tr>";
     }
 } else {
-    echo "<tr><td colspan='7'>No messages found.</td></tr>"; // Adjusted colspan to include all columns
+    echo "<tr><td colspan='7'>No messages found.</td></tr>"; 
 }
 
 $conn->close();

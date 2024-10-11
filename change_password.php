@@ -1,13 +1,12 @@
 <?php
 session_start();
 
-// Ensure the user is logged in
 if (!isset($_SESSION['email'])) {
     header("Location: login.php"); 
     exit();
 }
 
-// Database connection
+
 $host = 'localhost';
 $dbname = 'meru doctors plaza';
 $user = 'root';
@@ -18,7 +17,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Load PHPMailer
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 require 'vendor/autoload.php';  
@@ -27,7 +26,7 @@ require 'vendor/autoload.php';
 function sendPasswordChangeEmail($email) {
     $mail = new PHPMailer(true);
     try {
-        // Server settings
+       
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com'; 
         $mail->SMTPAuth = true;
@@ -132,7 +131,7 @@ $conn->close();
         }
 
         button {
-            background-color: #007bff; /* Blue button color */
+            background-color: #007bff;
             color: white;
             padding: 10px;
             border: none;

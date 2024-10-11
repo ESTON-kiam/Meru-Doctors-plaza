@@ -1,18 +1,46 @@
 <?php
-// Database connection
-$host = 'localhost'; // Database host
-$dbname = 'meru doctors plaza'; // Database name
-$user = 'root'; // Database username
-$pass = ''; // Database password
+session_start();
+
+
+if (!isset($_SESSION['email'])) {
+    header("Location: login.php"); 
+    exit();
+}
+
+
+$host = 'localhost';
+$dbname = 'meru doctors plaza';
+$user = 'root';
+$pass = '';
 
 $conn = new mysqli($host, $user, $pass, $dbname);
 
-// Check the connection
+
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Fetch all members
+
+$email = $_SESSION['email'];
+
+
+$stmt = $conn->prepare("SELECT id FROM members WHERE email = ?");
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$stmt->bind_result($admin_id);
+$stmt->fetch();
+$stmt->close();
+
+
+$is_super_admin = ($admin_id == 1);
+
+
+if (!$is_super_admin) {
+    echo "You do not have permission to view this page.";
+    exit();
+}
+
+
 $sql = "SELECT id, email, national_id, profile_picture FROM members";
 $result = $conn->query($sql);
 ?>
@@ -60,32 +88,26 @@ $result = $conn->query($sql);
                 <th>ID</th>
                 <th>Email</th>
                 <th>National ID</th>
-                <th>Profile Picture</th> <!-- Add profile picture column -->
-                <th>Action</th> <!-- Add action column for delete button -->
+                <th>Profile Picture</th>
+                <th>Action</th> 
             </tr>
         </thead>
         <tbody>
         <?php
-        session_start(); // Start a session to track logged-in user
-
-        // For demonstration purposes, let's assume you have already stored the logged-in user's ID in the session
-        // In a real application, you'll retrieve this from the login system
-        $_SESSION['user_id'] = 1; // Super admin ID for now
-
         if ($result->num_rows > 0) {
-            // Output data of each row
+            
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>";
                 echo "<td>" . $row['id'] . "</td>";
                 echo "<td>" . $row['email'] . "</td>";
                 echo "<td>" . $row['national_id'] . "</td>";
                 
-                // Check if the profile picture exists, else display a default image
+                
                 $profilePicture = !empty($row['profile_picture']) ? $row['profile_picture'] : 'default-profile.png';
-                echo "<td><img src='" . $profilePicture . "' alt='Profile Picture'></td>"; // Display profile picture
+                echo "<td><img src='" . $profilePicture . "' alt='Profile Picture'></td>";
 
-                // Check if the current member ID is not 1 before showing the delete button
-                if ($_SESSION['user_id'] == 1 && $row['id'] != 1) {
+               
+                if ($row['id'] != 1) {
                     echo "<td>";
                     echo "<form method='POST' action='delete_admin.php'>";
                     echo "<input type='hidden' name='admin_id' value='" . $row['id'] . "' />";
@@ -99,7 +121,7 @@ $result = $conn->query($sql);
                 echo "</tr>";
             }
         } else {
-            echo "<tr><td colspan='5'>No members found</td></tr>"; // Adjust colspan to 5 due to added column
+            echo "<tr><td colspan='5'>No members found</td></tr>";
         }
         ?>
         </tbody>

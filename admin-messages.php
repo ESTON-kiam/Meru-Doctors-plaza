@@ -1,13 +1,12 @@
 <?php
 session_start();
 
-// Check if the user is logged in
 if (!isset($_SESSION['email'])) {
-    header("Location: login.php"); // Redirect to login if not logged in
+    header("Location: login.php"); 
     exit();
 }
 
-// Database connection
+
 $host = 'localhost';
 $dbname = 'meru doctors plaza';
 $user = 'root';
@@ -19,7 +18,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Fetch the current user's details, including profile picture
+
 $email = $_SESSION['email'];
 $stmt = $conn->prepare("SELECT profile_picture FROM members WHERE email = ?");
 $stmt->bind_param("s", $email);
@@ -28,9 +27,9 @@ $stmt->bind_result($profile_picture);
 $stmt->fetch();
 $stmt->close();
 
-// Default profile picture if not set
+
 if (empty($profile_picture)) {
-    $profile_picture = 'uploads/profile_pictures/default.png'; // Ensure you have a default image
+    $profile_picture = 'uploads/profile_pictures/default.png'; 
 }
 
 $conn->close();

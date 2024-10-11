@@ -23,13 +23,13 @@
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px; /* Set a fixed width for the form */
+            width: 300px; 
         }
 
         h2 {
-            text-align: center; /* Center the heading */
-            color: #007bff; /* Blue color for the heading */
-            margin-bottom: 20px; /* Space between heading and form */
+            text-align: center; 
+            color: #007bff;
+            margin-bottom: 20px; 
         }
 
         input[type="email"],
@@ -80,7 +80,7 @@
     <?php
     session_start();
 
-    // Database connection
+ 
     $host = 'localhost';
     $dbname = 'meru doctors plaza';
     $user = 'root';
@@ -106,12 +106,12 @@
             $stmt->bind_result($hashed_password);
             $stmt->fetch();
 
-            // Verify the password
+           
             if (password_verify($password, $hashed_password)) {
-                // Set session variables for the logged-in user
+               
                 $_SESSION['email'] = $email;
                 echo "<p class='success'>Login successful!</p>";
-                // Redirect to the admin dashboard or desired page
+                
                 header("Location: admin-appointment.php");
                 exit();
             } else {

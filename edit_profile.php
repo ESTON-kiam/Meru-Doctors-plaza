@@ -1,13 +1,13 @@
 <?php
 session_start();
 
-// Check if the user is logged in
+
 if (!isset($_SESSION['email'])) {
-    header("Location: login.php"); // Redirect to login if not logged in
+    header("Location: login.php"); 
     exit();
 }
 
-// Database connection
+
 $host = 'localhost';
 $dbname = 'meru doctors plaza';
 $user = 'root';
@@ -19,7 +19,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Fetch user profile data
+
 $email = $_SESSION['email'];
 $stmt = $conn->prepare("SELECT national_id, profile_picture FROM members WHERE email = ?");
 $stmt->bind_param("s", $email);
@@ -31,24 +31,24 @@ $stmt->close();
 $update_message = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Update profile data
+  
     $new_national_id = $_POST['national_id'];
-    $profile_picture = $current_profile_picture; // Default to current profile picture
+    $profile_picture = $current_profile_picture; 
 
-    // Check if a new profile picture is uploaded
+    
     if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] == 0) {
-        // File upload settings
+       
         $target_dir = "uploads/profile_pictures/";
         $file_name = uniqid() . '_' . basename($_FILES['profile_picture']['name']);
         $target_file = $target_dir . $file_name;
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-        // Validate file type (allow only image types)
+        
         $valid_extensions = array("jpg", "jpeg", "png", "gif");
         if (in_array($imageFileType, $valid_extensions)) {
-            // Move the uploaded file to the target directory
+            
             if (move_uploaded_file($_FILES['profile_picture']['tmp_name'], $target_file)) {
-                // Save the file path in the database
+                
                 $profile_picture = $target_file;
             } else {
                 $update_message = "Error uploading the file.";
@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    // Update the national ID and profile picture in the database
+    
     $stmt = $conn->prepare("UPDATE members SET national_id = ?, profile_picture = ? WHERE email = ?");
     $stmt->bind_param("sss", $new_national_id, $profile_picture, $email);
     if ($stmt->execute()) {
