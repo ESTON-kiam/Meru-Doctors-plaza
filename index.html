@@ -318,67 +318,71 @@
           </div>
 
           <form method="post" action="process_appointment.php" role="form" class="php-email-form" data-aos="fade-up"
-                data-aos-delay="100">
-              
-              <div class="row">
-                  <div class="col-md-4 form-group">
-                      <label for="name"></label><input type="text" name="name" class="form-control" id="name"
-                                                       placeholder="Your Name" required autocomplete="name">
-                  </div>
-                  <div class="col-md-4 form-group mt-3 mt-md-0">
-                    <label for="nationalID">National ID</label>
-                    <input type="text" class="form-control" name="national_id" id="nationalID" 
-                           placeholder="Your National Id" required autocomplete="off">
-                  </div>
-                  <div class="col-md-4 form-group mt-3 mt-md-0">
-                      <label for="phone"></label><input type="tel" class="form-control" name="phone" id="phone"
-                                                        placeholder="Your Phone" required autocomplete="tel">
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-md-4 form-group mt-3">
-                      <label for="date"></label><input type="date" name="appointment_date" class="form-control datepicker"
-                                                       id="date" placeholder="Appointment Date" required
-                                                       autocomplete="off">
-                  </div>
-                  <div class="col-md-4 form-group mt-3">
-                      <label for="department"></label><select name="department" id="department" class="form-select"
-                                                              autocomplete="department">
-                      <option value="">Select Department</option>
-                      <option value="">Pediatrics</option>
-                      <option value="" >Cardiology</option>
-                      <option value="">Neurology</option>
-                      <option value="">Hepatology</option>
-                      <option value="">Denstist</option>
-                  </select>
-                  </div>
-                  <div class="col-md-4 form-group mt-3">
-                      <label for="doctor"></label><select name="doctor" id="doctor" class="form-select"
-                                                          autocomplete="doctor">
-                      <option value="">Select Doctor</option>
-                      <option value="">Dr. Amanda Jenson</option>
-                      <option value="">Dr. William Anderson</option>
-                      <option value="">Dr. Sarah Johnson</option>
-                      <option value="">Dr. Walter White</option>
-                  </select>
-                  </div>
-              </div>
-
-              <div class="form-group mt-3">
-                  <label>
-                      <textarea class="form-control" name="message" rows="5" placeholder="Message (Optional)"
-                                autocomplete="off"></textarea>
-                  </label>
-              </div>
-              <div class="my-3">
-              <div class="loading">Loading</div>
-                        <div class="success-message"></div>
-                        <div class="sent-message">Your Appointment request has been sent successfully. Thank you!</div>
-              </div>
-              <div class="text-center">
-                  <button type="submit">Make an Appointment</button>
-              </div>
-          </form>
+          data-aos-delay="100">
+      
+        <div class="row">
+            <div class="col-md-4 form-group">
+                <label for="name">Your Name</label>
+                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required autocomplete="name">
+            </div>
+            <div class="col-md-4 form-group mt-3 mt-md-0">
+                <label for="nationalID">National ID</label>
+                <input type="text" class="form-control" name="national_id" id="nationalID" 
+                       placeholder="Your National ID" required autocomplete="off">
+            </div>
+            <div class="col-md-4 form-group mt-3 mt-md-0">
+                <label for="phone">Phone Number</label>
+                <input type="tel" class="form-control" name="phone" id="phone"
+                       placeholder="Your Phone" required autocomplete="tel">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-4 form-group mt-3">
+                <label for="date">Appointment Date</label>
+                <input type="date" name="appointment_date" class="form-control datepicker" id="date" 
+                       placeholder="Appointment Date" required autocomplete="off">
+            </div>
+            <div class="col-md-4 form-group mt-3">
+                <label for="department">Department</label>
+                <select name="department" id="department" class="form-select" required>
+                    <option value="">Select Department</option>
+                    <option value="Pediatrics">Pediatrics</option>
+                    <option value="Cardiology">Cardiology</option>
+                    <option value="Neurology">Neurology</option>
+                    <option value="Hepatology">Hepatology</option>
+                    <option value="Dentistry">Dentistry</option>
+                </select>
+            </div>
+            <div class="col-md-4 form-group mt-3">
+                <label for="doctor">Doctor</label>
+                <select name="doctor" id="doctor" class="form-select" required>
+                    <option value="">Select Doctor</option>
+                    <option value="Dr. Amanda Jenson">Dr. Amanda Jenson</option>
+                    <option value="Dr. William Anderson">Dr. William Anderson</option>
+                    <option value="Dr. Sarah Johnson">Dr. Sarah Johnson</option>
+                    <option value="Dr. Walter White">Dr. Walter White</option>
+                </select>
+            </div>
+        </div>
+    
+        <div class="form-group mt-3">
+            <label for="message">Message (Optional)</label>
+            <textarea class="form-control" name="message" rows="5" id="message" placeholder="Message (Optional)" autocomplete="off"></textarea>
+        </div>
+        
+        <div class="my-3">
+            <div class="loading">Loading</div>
+            <div class="success-message"></div>
+            <div class="sent-message">Your Appointment request has been sent successfully. Thank you!</div>
+        </div>
+        
+        <div class="text-center">
+            <button type="submit">Make an Appointment</button>
+        </div>
+    
+    </form>
+    
 
           <section id="appointment" class="appointment section-bg">
             <div class="container" data-aos="fade-up">
@@ -619,7 +623,7 @@
           </div>
           <!-- pathology Tab -->
           <div class="tab-pane" id="tab-patho">
-            <h3>Dentist</h3>
+            <h3>Pathology</h3>
             <p class="fst-italic"> Pathology.</p>
             <img src="assets/img/pathology.jpeg" alt="Pathology Department" class="img-fluid">
             <p>From routine check-ups to advanced treatments, we offer comprehensive dental services in a comfortable and welcoming environment</p>
@@ -1059,7 +1063,7 @@
                   <div class="success-message"></div>
                   <div class="sent-message">Your message has been sent. Thank you!</div>
 
-                  <button type="submit">Send Message</button>
+                <button type="submit">Send Message</button>
                 </div>
 
               </div>
