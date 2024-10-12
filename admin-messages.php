@@ -63,7 +63,72 @@ $conn->close();
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+  <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
 
+        /* Notification Bell Styles */
+        .notification-bell {
+            position: relative;
+            cursor: pointer;
+            margin: 20px; /* Adjust for spacing */
+            float: right; /* Align to the right */
+        }
+
+        .notification-bell i {
+            font-size: 24px;
+            color: #0056b3; /* Blue color for the bell icon */
+        }
+
+        .notification-count {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background: blue; /* Notification bubble color */
+            color: white;
+            border-radius: 50%;
+            padding: 5px 8px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Notification Dropdown */
+        .notification-dropdown {
+            display: none; /* Hidden by default */
+            position: absolute;
+            right: 0;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            z-index: 1000; /* Above other elements */
+            min-width: 200px; /* Minimum width */
+            max-height: 300px; /* Max height */
+            overflow-y: auto; /* Scroll if needed */
+        }
+
+        .notification-dropdown ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .notification-dropdown li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd; /* Divider */
+        }
+
+        .notification-dropdown li:last-child {
+            border-bottom: none; /* Remove last border */
+        }
+
+        .notification-dropdown li:hover {
+            background: #f0f0f0; /* Highlight on hover */
+        }
+    </style>
   
 </head>
 
@@ -97,6 +162,13 @@ $conn->close();
             <li><a href="admin-messages.php">Messages</a></li>
             <li><a href="Register.php">Register new member</a></li>
             <li><a href="admin-email.php">Subsciber messaging</a></li>
+            <div class="notification-bell" onclick="toggleNotifications()">
+        <i class="fas fa-bell"></i>
+        <div class="notification-count" id="notificationCount">0</div>
+        <div class="notification-dropdown" id="notificationDropdown">
+            <ul id="notificationList"></ul>
+        </div>
+    </div>
             
              <!-- Profile dropdown -->
              <!-- Profile dropdown -->
@@ -198,7 +270,49 @@ $conn->close();
 <!-- Main JS File -->
 <script src="assets/js/main.js"></script>
 
-   
+<script>
+        // Sample notification data (this should be fetched from your backend)
+        let notifications = {
+            newAppointments: 3,
+            newOrders: 2,
+            newMessages: 1,
+            newSubscribers: 5,
+        };
+
+        // Function to update notification count and dropdown
+        function updateNotificationCount() {
+            const totalNotifications = notifications.newAppointments + notifications.newOrders + notifications.newMessages + notifications.newSubscribers;
+            document.getElementById('notificationCount').innerText = totalNotifications;
+
+            // Populate the notification dropdown
+            const notificationList = document.getElementById('notificationList');
+            notificationList.innerHTML = ''; // Clear existing notifications
+            if (totalNotifications > 0) {
+                notificationList.innerHTML += `<li>${notifications.newAppointments} new appointments</li>`;
+                notificationList.innerHTML += `<li>${notifications.newOrders} new orders</li>`;
+                notificationList.innerHTML += `<li>${notifications.newMessages} new messages</li>`;
+                notificationList.innerHTML += `<li>${notifications.newSubscribers} new subscribers</li>`;
+            } else {
+                notificationList.innerHTML = '<li>No new notifications</li>';
+            }
+        }
+
+        // Function to toggle the display of notifications
+        function toggleNotifications() {
+            const dropdown = document.getElementById('notificationDropdown');
+            dropdown.style.display = dropdown.style.display === 'none' || dropdown.style.display === '' ? 'block' : 'none';
+        }
+
+        // Initial update of notification count
+        updateNotificationCount();
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+            if (!event.target.matches('.notification-bell')) {
+                document.getElementById('notificationDropdown').style.display = 'none';
+            }
+        }
+    </script>
 
 
 </body>
