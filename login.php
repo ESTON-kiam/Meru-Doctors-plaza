@@ -7,29 +7,27 @@
     <title>Admin Login - Meru Doctors Plaza</title>
     <style>
         body {
-            
             font-family: Arial, sans-serif;
             background-color: #f2f2f2;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh; 
-            margin: 0; 
+            height: 100vh;
+            margin: 0;
         }
 
         form {
-           
             background-color: white;
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px; 
+            width: 300px;
         }
 
         h2 {
-            text-align: center; 
+            text-align: center;
             color: #007bff;
-            margin-bottom: 20px; 
+            margin-bottom: 20px;
         }
 
         input[type="email"],
@@ -42,14 +40,13 @@
         }
 
         button {
-           
-            background-color: #007bff; 
+            background-color: #007bff;
             color: white;
             padding: 10px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            width: 100%; 
+            width: 100%;
         }
 
         button:hover {
@@ -65,67 +62,119 @@
             color: green;
             font-size: 0.9em;
         }
+
+        a {
+            text-align: center;
+            display: block;
+            margin-top: 10px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 
 <body>
-<div class="col-lg-6"><h1>Admin Login</h1>
-    <form method="post" action="login.php">
+
+    <form method="post" action="">
+        <h2>Admin Login</h2>
         <input type="email" name="email" placeholder="Email" required>
         <input type="password" name="password" placeholder="Password" required>
         <button type="submit">Login</button>
+        <center><a href="index.html">Home</a></center>
     </form>
-    <center><a href="index.html">Home</a></center>
 
     <?php
-    session_start();
+session_start();
 
- 
-    $host = 'localhost';
-    $dbname = 'meru doctors plaza';
-    $user = 'root';
-    $pass = '';
+// PHPMailer dependencies
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+require 'vendor/autoload.php'; // Make sure you have PHPMailer installed via Composer
 
-    $conn = new mysqli($host, $user, $pass, $dbname);
+$host = 'localhost';
+$dbname = 'meru doctors plaza';
+$user = 'root';
+$pass = '';
 
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+$conn = new mysqli($host, $user, $pass, $dbname);
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-        
-        $stmt = $conn->prepare("SELECT password FROM members WHERE email = ?");
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $stmt->store_result();
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-        if ($stmt->num_rows > 0) {
-            $stmt->bind_result($hashed_password);
-            $stmt->fetch();
+    // Prepared statement to prevent SQL injection
+    $stmt = $conn->prepare("SELECT password FROM members WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->store_result();
 
-           
-            if (password_verify($password, $hashed_password)) {
-               
-                $_SESSION['email'] = $email;
-                echo "<p class='success'>Login successful!</p>";
-                
-                header("Location: admin-appointment.php");
-                exit();
-            } else {
-                echo "<p class='error'>Invalid password!</p>";
-            }
+    if ($stmt->num_rows > 0) {
+        $stmt->bind_result($hashed_password);
+        $stmt->fetch();
+
+        // Verifying the password
+        if (password_verify($password, $hashed_password)) {
+            // Set session and redirect
+            $_SESSION['email'] = $email;
+
+            // Send a login success email
+            sendLoginEmail($email);
+
+            // Display success message and redirect
+            echo "<p class='success'>Login successful! You will receive an email shortly.</p>";
+            header("Refresh: 2; URL=admin-appointment.php");
+            exit();
         } else {
-            echo "<p class='error'>No account found with that email!</p>";
+            echo "<p class='error'>Invalid password!</p>";
         }
-
-        $stmt->close();
+    } else {
+        echo "<p class='error'>No account found with that email!</p>";
     }
 
-    $conn->close();
-    ?>
+    $stmt->close();
+}
+
+$conn->close();
+
+// Function to send login email notification
+function sendLoginEmail($email) {
+    $mail = new PHPMailer(true);
+
+    try {
+        // Server settings
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com'; // Set the SMTP server to send through
+        $mail->SMTPAuth = true;
+        $mail->Username = 'engestonbrandon@gmail.com'; 
+        $mail->Password = 'pxmh wzte wcuy adnc'; 
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
+
+        // Recipients
+        $mail->setFrom('no-reply@yourdomain.com', 'Meru Doctors Plaza');
+        $mail->addAddress($email); // Recipient's email
+
+        // Content
+        $mail->isHTML(true);
+        $mail->Subject = 'Successful Login Notification';
+        $mail->Body = 'Dear user,<br><br>You have successfully logged into your account at Meru Doctors Plaza.<br><br>If this wasn’t you, please contact support immediately.<br><br>Regards,<br>Meru Doctors Plaza';
+
+        $mail->send();
+    } catch (Exception $e) {
+        echo "Email could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    }
+}
+?>
+
+
 </body>
 
 </html>

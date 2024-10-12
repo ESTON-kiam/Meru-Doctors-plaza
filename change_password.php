@@ -31,7 +31,7 @@ function sendPasswordChangeEmail($email) {
         $mail->Host = 'smtp.gmail.com'; 
         $mail->SMTPAuth = true;
         $mail->Username = 'engestonbrandon@gmail.com'; 
-        $mail->Password = 'whfg mqtm seqk qwye'; 
+        $mail->Password = 'pxmh wzte wcuy adnc'; 
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 

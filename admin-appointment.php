@@ -93,6 +93,7 @@ $conn->close();
             <li><a href="admin-order.php">Orders</a></li>
             <li><a href="admin-messages.php">Messages</a></li>
             <li><a href="Register.php">Register new member</a></li>
+            <li><a href="admin-email.php">Subsciber messaging</a></li>
             
             <!-- Profile dropdown -->
             <li class="dropdown">
