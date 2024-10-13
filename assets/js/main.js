@@ -1,25 +1,24 @@
-// Function to fetch notification data from the backend
+
 async function fetchNotifications() {
   try {
-      const response = await fetch('/api/notifications'); // Adjust the endpoint as necessary
+      const response = await fetch('/api/notifications'); 
       if (!response.ok) {
           throw new Error('Network response was not ok');
       }
-      const notifications = await response.json(); // Assuming the API returns the notification data in JSON format
+      const notifications = await response.json(); 
       updateNotificationCount(notifications);
   } catch (error) {
       console.error('Failed to fetch notifications:', error);
   }
 }
 
-// Function to update notification count and dropdown
 function updateNotificationCount(notifications) {
   const totalNotifications = notifications.newAppointments + notifications.newOrders + notifications.newMessages + notifications.newSubscribers;
   document.getElementById('notificationCount').innerText = totalNotifications;
 
-  // Populate the notification dropdown
+ 
   const notificationList = document.getElementById('notificationList');
-  notificationList.innerHTML = ''; // Clear existing notifications
+  notificationList.innerHTML = ''; 
   if (totalNotifications > 0) {
       notificationList.innerHTML += `<li>${notifications.newAppointments} new appointments</li>`;
       notificationList.innerHTML += `<li>${notifications.newOrders} new orders</li>`;
