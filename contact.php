@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($conn->query($sql) === TRUE) {
         echo "Your message has been sent successfully!";
-        // Redirect or display a success message
+       
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
