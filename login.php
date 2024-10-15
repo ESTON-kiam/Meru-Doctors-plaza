@@ -84,7 +84,7 @@
         <input type="email" name="email" placeholder="Email" required>
         <input type="password" name="password" placeholder="Password" required>
         <button type="submit">Login</button>
-        <a href="forgot_password.html">forgot password</a>
+        <a href="forgot_password.html">forgot password?</a>
         <center><a href="index.html">Home</a></center>
     </form>
 
