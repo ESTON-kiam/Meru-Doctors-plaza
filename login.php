@@ -84,6 +84,7 @@
         <input type="email" name="email" placeholder="Email" required>
         <input type="password" name="password" placeholder="Password" required>
         <button type="submit">Login</button>
+        <a href="forgot_password.html">forgot password</a>
         <center><a href="index.html">Home</a></center>
     </form>
 
@@ -159,7 +160,7 @@ function sendLoginEmail($email) {
         $mail->Port = 587;
 
         // Recipients
-        $mail->setFrom('no-reply@yourdomain.com', 'Meru Doctors Plaza');
+        $mail->setFrom('no-reply@gmail.com', 'Meru Doctors Plaza');
         $mail->addAddress($email); // Recipient's email
 
         // Content
