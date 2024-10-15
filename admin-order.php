@@ -64,71 +64,7 @@ $conn->close();
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
-  <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-
-        /* Notification Bell Styles */
-        .notification-bell {
-            position: relative;
-            cursor: pointer;
-            margin: 20px; /* Adjust for spacing */
-            float: right; /* Align to the right */
-        }
-
-        .notification-bell i {
-            font-size: 24px;
-            color: #0056b3; /* Blue color for the bell icon */
-        }
-
-        .notification-count {
-            position: absolute;
-            top: -5px;
-            right: -10px;
-            color: white;
-            border-radius: 50%;
-            padding: 5px 8px;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        /* Notification Dropdown */
-        .notification-dropdown {
-            display: none; /* Hidden by default */
-            position: absolute;
-            right: 0;
-            background: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 4px;
-            z-index: 1000; /* Above other elements */
-            min-width: 200px; /* Minimum width */
-            max-height: 300px; /* Max height */
-            overflow-y: auto; /* Scroll if needed */
-        }
-
-        .notification-dropdown ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .notification-dropdown li {
-            padding: 10px;
-            border-bottom: 1px solid #ddd; /* Divider */
-        }
-
-        .notification-dropdown li:last-child {
-            border-bottom: none; /* Remove last border */
-        }
-
-        .notification-dropdown li:hover {
-            background: #f0f0f0; /* Highlight on hover */
-        }
-    </style>
+  <link href="assets/css/notifi.css" rel="stylesheet">
 </head>
 
 <body class="index-page">
@@ -159,14 +95,7 @@ $conn->close();
             <li><a href="admin-messages.php">Messages</a></li>
             <li><a href="Register.php">Register new member</a></li>
             <li><a href="admin-email.php">Subsciber messaging</a></li>
-            <div class="notification-bell" onclick="toggleNotifications()">
-        <i class="fas fa-bell"></i>
-        <div class="notification-count" id="notificationCount">0</div>
-        <div class="notification-dropdown" id="notificationDropdown">
-            <ul id="notificationList"></ul>
-        </div>
-    </div>
-
+         
             
              <!-- Profile dropdown -->
              <!-- Profile dropdown -->
@@ -264,8 +193,6 @@ $conn->close();
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
  
- 
-
 </body>
 
 </html>
