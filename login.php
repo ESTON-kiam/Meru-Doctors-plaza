@@ -91,10 +91,10 @@
     <?php
 session_start();
 
-// PHPMailer dependencies
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-require 'vendor/autoload.php'; // Make sure you have PHPMailer installed via Composer
+require 'vendor/autoload.php'; 
 
 $host = 'localhost';
 $dbname = 'meru doctors plaza';
@@ -111,7 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Prepared statement to prevent SQL injection
+    
     $stmt = $conn->prepare("SELECT password FROM members WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -121,15 +121,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_result($hashed_password);
         $stmt->fetch();
 
-        // Verifying the password
+        
         if (password_verify($password, $hashed_password)) {
-            // Set session and redirect
+            
             $_SESSION['email'] = $email;
+            $_SESSION['last_activity'] = time();
 
-            // Send a login success email
+           
             sendLoginEmail($email);
 
-            // Display success message and redirect
             echo "<p class='success'>Login successful! You will receive an email shortly.</p>";
             header("Refresh: 2; URL=admin-appointment.php");
             exit();
@@ -145,14 +145,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 $conn->close();
 
-// Function to send login email notification
+
 function sendLoginEmail($email) {
     $mail = new PHPMailer(true);
 
     try {
-        // Server settings
+       
         $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com'; // Set the SMTP server to send through
+        $mail->Host = 'smtp.gmail.com'; 
         $mail->SMTPAuth = true;
         $mail->Username = 'engestonbrandon@gmail.com'; 
         $mail->Password = 'pxmh wzte wcuy adnc'; 
@@ -161,9 +161,9 @@ function sendLoginEmail($email) {
 
         // Recipients
         $mail->setFrom('no-reply@gmail.com', 'Meru Doctors Plaza');
-        $mail->addAddress($email); // Recipient's email
+        $mail->addAddress($email);
 
-        // Content
+        
         $mail->isHTML(true);
         $mail->Subject = 'Successful Login Notification';
         $mail->Body = 'Dear user,<br><br>You have successfully logged into your account at Meru Doctors Plaza.<br><br>If this wasn’t you, please contact support immediately.<br><br>Regards,<br>Meru Doctors Plaza';
