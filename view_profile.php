@@ -3,13 +3,13 @@
 <?php 
 session_start(); 
 
-// Check if the user is logged in 
+
 if (!isset($_SESSION['email'])) { 
-    header("Location: login.php"); // Redirect to login if not logged in 
+    header("Location: login.php"); 
     exit(); 
 } 
 
-// Database connection 
+
 $host = 'localhost'; 
 $dbname = 'meru doctors plaza'; 
 $user = 'root'; 
@@ -22,7 +22,7 @@ try {
         throw new Exception("Connection failed: " . $conn->connect_error);
     } 
 
-    // Fetch user profile data 
+     
     $email = $_SESSION['email']; 
     $stmt = $conn->prepare("SELECT national_id, profile_picture FROM members WHERE email = ?"); 
     $stmt->bind_param("s", $email); 
@@ -32,7 +32,7 @@ try {
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         $national_id = $row['national_id'];
-        $profile_picture = $row['profile_picture'] ?? 'default-profile-picture.jpg'; // Default picture if none set
+        $profile_picture = $row['profile_picture'] ?? 'default-profile-picture.jpg'; 
     } else {
         throw new Exception("User not found");
     }
@@ -40,7 +40,7 @@ try {
     $stmt->close(); 
     $conn->close(); 
 } catch (Exception $e) {
-    // Log the error and show a user-friendly message
+    
     error_log($e->getMessage());
     $error_message = "An error occurred while fetching your profile. Please try again later.";
 }
@@ -89,7 +89,7 @@ try {
             <p><strong>National ID:</strong> <?php echo htmlspecialchars($national_id); ?></p> 
             <img src="<?php echo htmlspecialchars($profile_picture); ?>" alt="Profile Picture" style="width: 150px; height: 150px; border-radius: 50%;"> 
 
-            <!-- Add more profile fields as needed --> 
+           
         </div> 
         <center><a href="admin-appointment.php">Go back</a></center>
     <?php endif; ?>
