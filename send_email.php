@@ -14,6 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $host = 'localhost';
     $dbname = 'meru doctors plaza'; 
     $pass = ''; 
+    $user='root';
 
     try {
         $pdo = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
