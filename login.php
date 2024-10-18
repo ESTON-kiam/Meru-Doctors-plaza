@@ -84,18 +84,14 @@
         <input type="email" name="email" placeholder="Email" required>
         <input type="password" name="password" placeholder="Password" required>
         <button type="submit">Login</button>
-        <a href="forgot_password.html">forgot password?</a>
+        <a href="forgot_password.html">Forgot password?</a>
         <center><a href="index.html">Home</a></center>
     </form>
 
     <?php
 session_start();
 
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-require 'vendor/autoload.php'; 
-
+// Database credentials
 $host = 'localhost';
 $dbname = 'meru doctors plaza';
 $user = 'root';
@@ -103,35 +99,39 @@ $pass = '';
 
 $conn = new mysqli($host, $user, $pass, $dbname);
 
+// Check database connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $email = trim($_POST['email']);
+    $password = trim($_POST['password']);
 
-    
-    $stmt = $conn->prepare("SELECT password FROM members WHERE email = ?");
+    // Prepared statement to get user details
+    $stmt = $conn->prepare("SELECT id, password FROM members WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        $stmt->bind_result($hashed_password);
+        $stmt->bind_result($user_id, $hashed_password);
         $stmt->fetch();
 
-        
+        // Verify password
         if (password_verify($password, $hashed_password)) {
-            
+            // Set session variables
             $_SESSION['email'] = $email;
-            $_SESSION['last_activity'] = time();
+            $_SESSION['user_id'] = $user_id;
+            $_SESSION['last_activity'] = time(); // For session timeout
 
-           
-            sendLoginEmail($email);
+            // Check if the user is super admin (ID = 1)
+            if ($user_id == 1) {
+                $_SESSION['role'] = 'super_admin';
+            }
 
-            echo "<p class='success'>Login successful! You will receive an email shortly.</p>";
-            header("Refresh: 2; URL=admin-appointment.php");
+            echo "<p class='success'>Login successful!</p>";
+            header("Location: admin-appointment.php");
             exit();
         } else {
             echo "<p class='error'>Invalid password!</p>";
@@ -144,37 +144,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $conn->close();
-
-
-function sendLoginEmail($email) {
-    $mail = new PHPMailer(true);
-
-    try {
-       
-        $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com'; 
-        $mail->SMTPAuth = true;
-        $mail->Username = 'engestonbrandon@gmail.com'; 
-        $mail->Password = 'pxmh wzte wcuy adnc'; 
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port = 587;
-
-        // Recipients
-        $mail->setFrom('no-reply@gmail.com', 'Meru Doctors Plaza');
-        $mail->addAddress($email);
-
-        
-        $mail->isHTML(true);
-        $mail->Subject = 'Successful Login Notification';
-        $mail->Body = 'Dear user,<br><br>You have successfully logged into your account at Meru Doctors Plaza.<br><br>If this wasn’t you, please contact support immediately.<br><br>Regards,<br>Meru Doctors Plaza';
-
-        $mail->send();
-    } catch (Exception $e) {
-        echo "Email could not be sent. Mailer Error: {$mail->ErrorInfo}";
-    }
-}
 ?>
-
 
 </body>
 

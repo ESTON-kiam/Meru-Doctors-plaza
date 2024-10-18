@@ -44,7 +44,7 @@
             },
             "time": "2024-10-09T10:07:50+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "PHPMailer\\PHPMailer\\": "src/"
@@ -111,7 +111,7 @@
             },
             "time": "2024-10-03T15:44:20+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Twilio\\": "src/Twilio/"

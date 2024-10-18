@@ -35,16 +35,16 @@ function sendPasswordChangeEmail($email) {
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
-        // Recipients
+        
         $mail->setFrom('engestonbrandon@gmail.com', 'Meru Doctors Plaza');
         $mail->addAddress($email);
 
-        // Email content
+        
         $mail->isHTML(true);
         $mail->Subject = 'Password Changed Successfully';
-        $mail->Body    = 'Dear user,<br><br>Your password has been changed successfully.<br><br>If you did not initiate this change, please contact support immediately.<br><br>Regards,<br>Meru Doctors Plaza';
+        $mail->Body    = 'Dear user,<br><br>Your password has been changed successfully.<br><br>If you did not initiate this change, please contact support immediately.<br><br><b>Regards</b>,<br>Meru Doctors Plaza';
 
-        // Send the email
+       
         $mail->send();
         echo 'Email has been sent successfully';
     } catch (Exception $e) {
@@ -52,29 +52,29 @@ function sendPasswordChangeEmail($email) {
     }
 }
 
-// Handle password change form submission
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_SESSION['email'];
     $current_password = $_POST['current_password'];
     $new_password = $_POST['new_password'];
 
-    // Fetch the current password hash from the database
+    
     $stmt = $conn->prepare("SELECT password FROM members WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->bind_result($hashed_password);
     $stmt->fetch();
 
-    // Verify the current password
+   
     if (password_verify($current_password, $hashed_password)) {
-        // Hash the new password and update the database
+       
         $new_hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
         $stmt->close();
 
         $stmt = $conn->prepare("UPDATE members SET password = ? WHERE email = ?");
         $stmt->bind_param("ss", $new_hashed_password, $email);
         if ($stmt->execute()) {
-            // Send email notification
+           
             sendPasswordChangeEmail($email);
             echo "<p class='success'>Password changed successfully!</p>";
         } else {

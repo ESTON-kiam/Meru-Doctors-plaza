@@ -1,13 +1,18 @@
-
 <?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/PHPMailer/src/Exception.php';
+require 'PHPMailer/PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/PHPMailer/src/SMTP.php';
+
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start(); 
 }
 
-
 $timeout_duration = 1800; // 30 minutes
-
 
 if (isset($_SESSION['last_activity'])) {
     if (time() - $_SESSION['last_activity'] > $timeout_duration) {
@@ -18,21 +23,10 @@ if (isset($_SESSION['last_activity'])) {
     }
 }
 
-
 $_SESSION['last_activity'] = time();
-
 
 if (!isset($_SESSION['email'])) {
     header("Location: login.php");
-    exit();
-}
-?>
-<?php
-
-
-
-if (!isset($_SESSION['email'])) {
-    header("Location: login.php"); 
     exit();
 }
 
@@ -57,25 +51,23 @@ $stmt->bind_result($admin_id);
 $stmt->fetch();
 $stmt->close();
 
-
 $is_super_admin = ($admin_id == 1);
-
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && $is_super_admin) {
     $email = $_POST['email'];
     $national_id = $_POST['national_id'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT); 
+    $target_file = ""; 
+
+   
     if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] == 0) {
-        
         $target_dir = "uploads/profile_pictures/";
-        
-      
         $file_name = basename($_FILES['profile_picture']['name']);
         $target_file = $target_dir . time() . '_' . $file_name;
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-        
+        // Check if image file is an actual image
         $check = getimagesize($_FILES['profile_picture']['tmp_name']);
         if ($check !== false) {
             $uploadOk = 1;
@@ -84,23 +76,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $is_super_admin) {
             $uploadOk = 0;
         }
 
-      
+       
         if ($_FILES['profile_picture']['size'] > 2000000) {
             echo "<p class='error'>Sorry, your file is too large. Max size 2MB.</p>";
             $uploadOk = 0;
         }
 
-       
+      
         if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
             echo "<p class='error'>Sorry, only JPG, JPEG & PNG files are allowed.</p>";
             $uploadOk = 0;
         }
 
-        
+       
         if ($uploadOk == 0) {
             echo "<p class='error'>Sorry, your file was not uploaded.</p>";
         } else {
-           
             if (move_uploaded_file($_FILES['profile_picture']['tmp_name'], $target_file)) {
                 echo "<p class='success'>Profile picture uploaded successfully.</p>";
             } else {
@@ -109,6 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $is_super_admin) {
         }
     }
 
+   
     $check_email = $conn->prepare("SELECT * FROM members WHERE email = ?");
     $check_email->bind_param("s", $email);
     $check_email->execute();
@@ -117,12 +109,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $is_super_admin) {
     if ($result->num_rows > 0) {
         echo "<p class='error'>Email already exists!</p>";
     } else {
-        
+       
         $stmt = $conn->prepare("INSERT INTO members (email, national_id, password, profile_picture) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("ssss", $email, $national_id, $password, $target_file);
 
         if ($stmt->execute()) {
             echo "<p class='success'>Registration successful!</p>";
+            sendRegistrationEmail($email, $_POST['password']);
         } else {
             echo "<p class='error'>Error: " . $stmt->error . "</p>";
         }
@@ -134,6 +127,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $is_super_admin) {
 }
 
 $conn->close();
+
+
+function sendRegistrationEmail($email, $plainPassword) {
+    $mail = new PHPMailer(true);
+
+    try {
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com'; 
+        $mail->SMTPAuth = true;
+        $mail->Username = 'engestonbrandon@gmail.com'; 
+        $mail->Password = 'pxmh wzte wcuy adnc'; 
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
+
+        
+        $mail->setFrom('engestonbrandon@gmail.com', 'Meru Doctors Plaza');
+        $mail->addAddress($email);
+
+        // Content
+        $mail->isHTML(true);
+        $mail->Subject = 'Registration Successful';
+        $mail->Body = 'Dear user,<br><br>You have been successfully registered.<br>Your password is: ' . $plainPassword . '<br><br>Regards,<br>Meru Doctors Plaza';
+
+        $mail->send();
+    } catch (Exception $e) {
+        echo "Email could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -214,7 +235,7 @@ $conn->close();
             <input type="email" name="email" placeholder="Email" required>
             <input type="text" name="national_id" placeholder="National ID" required>
             <input type="password" name="password" placeholder="Password (min 8 characters)" required minlength="8">
-            <input type="file" name="profile_picture" accept="image/*" required>
+            <input type="file" name="profile_picture" accept="image/*" >
             <button type="submit">Register</button>
         </form>
         <center><a href="admin-appointment.php">Go Back</a></center>
@@ -226,3 +247,4 @@ $conn->close();
 </body>
 
 </html>
+
