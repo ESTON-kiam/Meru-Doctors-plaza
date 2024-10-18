@@ -61,7 +61,7 @@ try {
         } 
 
         h2 { 
-            color: #007bff; /* Blue color for heading */ 
+            color: #007bff; 
         } 
 
         .profile-info { 

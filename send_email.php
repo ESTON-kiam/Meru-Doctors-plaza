@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
 
           
-            $mail->setFrom('no-reply@merudoctorsplaza.com', 'Meru Doctors\' Plaza'); // Sender info
+            $mail->setFrom('no-reply@merudoctorsplaza.com', 'Meru Doctors\' Plaza'); 
 
             
             foreach ($subscribers as $subscriber) {
