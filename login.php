@@ -91,7 +91,7 @@
     <?php
 session_start();
 
-// Database credentials
+
 $host = 'localhost';
 $dbname = 'meru doctors plaza';
 $user = 'root';
@@ -99,7 +99,7 @@ $pass = '';
 
 $conn = new mysqli($host, $user, $pass, $dbname);
 
-// Check database connection
+
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -108,7 +108,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
 
-    // Prepared statement to get user details
+    
     $stmt = $conn->prepare("SELECT id, password FROM members WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -118,14 +118,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_result($user_id, $hashed_password);
         $stmt->fetch();
 
-        // Verify password
         if (password_verify($password, $hashed_password)) {
-            // Set session variables
+            
             $_SESSION['email'] = $email;
             $_SESSION['user_id'] = $user_id;
-            $_SESSION['last_activity'] = time(); // For session timeout
+            $_SESSION['last_activity'] = time(); 
 
-            // Check if the user is super admin (ID = 1)
+           
             if ($user_id == 1) {
                 $_SESSION['role'] = 'super_admin';
             }
