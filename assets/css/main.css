@@ -1,3 +1,17 @@
+@media print {
+  body * {
+      visibility: hidden; /* Hide everything except the table */
+  }
+  #appointmentsTable, #appointmentsTable * {
+      visibility: visible; /* Show the table and its children */
+  }
+  #appointmentsTable {
+      position: absolute; /* Position it to fit the page */
+      left: 0;
+      top: 0;
+  }
+}
+
 .business-info {
   position: fixed;
   top: 20%;

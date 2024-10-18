@@ -93,6 +93,19 @@ $conn->close();
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
   <link href="assets/css/notifi.css" rel="stylesheet">
+  <script>
+      function printOrders() {
+          var printContents = document.getElementById('ordersTable').outerHTML;
+          var newWindow = window.open('', '', 'width=600,height=400');
+          newWindow.document.write('<html><head><title>Print Orders</title>');
+          newWindow.document.write('</head><body>');
+          newWindow.document.write(printContents);
+          newWindow.document.write('</body></html>');
+          newWindow.document.close(); 
+          newWindow.print();
+          newWindow.close();
+      }
+  </script>
 </head>
 
 <body class="index-page">
@@ -154,7 +167,8 @@ $conn->close();
   <main class="main">
     <div class="container mt-5">
       <h2>Order List</h2>
-      <table class="table table-bordered">
+      <button class="btn btn-primary mb-3" onclick="printOrders()">Print Orders</button>
+      <table class="table table-bordered" id="ordersTable" border="1">
         <thead>
           <tr>
             <th>ID</th>

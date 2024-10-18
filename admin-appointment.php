@@ -96,6 +96,19 @@ $conn->close();
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
   <link href="assets/css/notifi.css" rel="stylesheet">
+  <script>
+        function printAppointments() {
+            var printContents = document.getElementById('appointmentsTable').outerHTML;
+            var newWindow = window.open('', '', 'width=600,height=400');
+            newWindow.document.write('<html><head><title>Print Appointment List</title>');
+            newWindow.document.write('</head><body>');
+            newWindow.document.write(printContents);
+            newWindow.document.write('</body></html>');
+            newWindow.document.close(); 
+            newWindow.print();
+            newWindow.close();
+        }
+    </script>
 </head>
 
 <body class="index-page">
@@ -159,7 +172,9 @@ $conn->close();
 
   
     <h1>Appointment List</h1>
-    <table border="1">
+    <button onclick="printAppointments()" class="btn btn-primary mb-3">Print All Appointments</button> 
+
+<table id="appointmentsTable" border="1">
       <thead>
         <tr>
           <th>ID</th>
@@ -176,42 +191,39 @@ $conn->close();
         </tr>
       </thead>
       <tbody>
-  <?php include 'fetch_appointments.php'; ?>
+                <?php include 'fetch_appointments.php'; ?>
+                <?php
+                foreach ($appointment as $appointment) {
+                    echo "<tr>";
+                    echo "<td>" . htmlspecialchars($appointment['id']) . "</td>";
+                    echo "<td>" . htmlspecialchars($appointment['name']) . "</td>";
+                    echo "<td>" . htmlspecialchars($appointment['national_id']) . "</td>";
+                    echo "<td>" . htmlspecialchars($appointment['phone']) . "</td>";
+                    echo "<td>" . htmlspecialchars($appointment['appointment_date']) . "</td>";
+                    echo "<td>" . htmlspecialchars($appointment['department']) . "</td>";
+                    echo "<td>" . htmlspecialchars($appointment['doctor']) . "</td>";
+                    echo "<td>" . htmlspecialchars($appointment['message']) . "</td>";
+                    echo "<td>" . htmlspecialchars($appointment['created_at']) . "</td>";
+                    
+                    echo "<td>";
+                    echo "<form method='POST' action='save_comment.php'>";
+                    echo "<textarea name='comment'>" . htmlspecialchars($appointment['comment']) . "</textarea>";
+                    echo "<input type='hidden' name='appointment_id' value='" . htmlspecialchars($appointment['id']) . "' />";
+                    echo "<button type='submit'>Save Comment</button>";
+                    echo "</form>";
+                    echo "</td>";
 
- 
-  <?php
-  foreach ($appointment as $appointment) {
-      echo "<tr>";
-      echo "<td>" . $appointment['id'] . "</td>";
-      echo "<td>" . $appointment['name'] . "</td>";
-      echo "<td>" . $appointment['national_id'] . "</td>";
-      echo "<td>" . $appointment['phone'] . "</td>";
-      echo "<td>" . $appointment['appointment_date'] . "</td>";
-      echo "<td>" . $appointment['department'] . "</td>";
-      echo "<td>" . $appointment['doctor'] . "</td>";
-      echo "<td>" . $appointment['message'] . "</td>";
-      echo "<td>" . $appointment['created_at'] . "</td>";
+                    echo "<td>";
+                    echo "<form method='POST' action='delete_appointment.php'>";
+                    echo "<input type='hidden' name='appointment_id' value='" . htmlspecialchars($appointment['id']) . "' />";
+                    echo "<button type='submit' onclick=\"return confirm('Are you sure you want to delete this appointment?');\">Delete</button>";
+                    echo "</form>";
+                    echo "</td>";
 
-      echo "<td>";
-      echo "<form method='POST' action='save_comment.php'>";
-      echo "<textarea name='comment'>" . $appointment['comment'] . "</textarea>";
-      echo "<input type='hidden' name='appointment_id' value='" . $appointment['id'] . "' />";
-      echo "<button type='submit'>Save Comment</button>";
-      echo "</form>";
-      echo "</td>";
-
-      
-      echo "<td>";
-      echo "<form method='POST' action='delete_appointment.php'>";
-      echo "<input type='hidden' name='appointment_id' value='" . $appointment['id'] . "' />";
-      echo "<button type='submit' onclick=\"return confirm('Are you sure you want to delete this appointment?');\">Delete</button>";
-      echo "</form>";
-      echo "</td>";
-
-      echo "</tr>";
-  }
-  ?>
-</tbody>
+                    echo "</tr>";
+                }
+                ?>
+            </tbody>
 
     </table>
 
