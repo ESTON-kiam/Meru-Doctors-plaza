@@ -51,6 +51,7 @@ if (isset($_GET['query'])) {
                                     <a href="#" class="text-blue-600 hover:underline" onmouseover="showSideInfo(<?php echo $index; ?>)"><?php echo htmlspecialchars($result['business_name']); ?></a>
                                 </h2>
                                 <p class="text-gray-600"><?php echo htmlspecialchars($result['address']); ?></p>
+                                
                             </div>
                         <?php endforeach; ?>
                     <?php endif; ?>
