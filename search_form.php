@@ -72,8 +72,9 @@ if (isset($_GET['query'])) {
             const info = searchResults[index];
             if (info) {
                 sideInfoContainer.innerHTML = `
-                    <h3 class="text-lg font-semibold mb-2">${info.business_name}</h3>
-                    <p><strong>Address:</strong> ${info.address}</p>
+                    <h3 class="text-lg font-semibold mb-2">${info.business_name}</h3><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15959.268333963459!2d37.655057!3d0.0451149!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x178821ea25e67a7d%3A0xcaef0f8a3fc108b0!2sMeru%20Doctors%20Plaza%20Ltd!5e0!3m2!1sen!2ske!4v1707987751672!5m2!1sen!2ske" width="500" height="700" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <p><strong>Address:</strong>  
+     ${info.address}</p>
                     <p><strong>Phone:</strong> ${info.phone_number}</p>
                     <p><strong>Open Hours:</strong> ${info.open_hours}</p>
                 `;
