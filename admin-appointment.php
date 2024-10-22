@@ -230,27 +230,7 @@ $conn->close();
   </main>
 
   <footer id="footer" class="footer light-background">
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-4 col-md-6 footer-about">
-          <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">Meru Doctors' Plaza</span>
-          </a>
-          <div class="footer-contact pt-3">
-            <p>MERU</p>
-            <p>Meru, I&M Building Second Floor, Meru, Eastern Province, 2828-60200, Meru, Eastern</p>
-            <p class="mt-3"><strong>Phone:</strong> <span>+2542345678</span></p>
-            <p><strong>Email:</strong> <span>merudoc@gmail.com</span></p>
-          </div>
-          <div class="social-links d-flex mt-4">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
+    
 
     <div class="container copyright text-center mt-4">
       <p>© <span>Copyright</span> <strong class="px-1 sitename">2024</strong> <span>All Rights Reserved</span></p>

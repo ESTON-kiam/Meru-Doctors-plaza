@@ -39,7 +39,7 @@ if (!isset($_SESSION['email'])) {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 20px;
-            background-color: #e9f3ff; /* Light blue background */
+            background-color: #e9f3ff;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -47,23 +47,23 @@ if (!isset($_SESSION['email'])) {
         }
 
         h2 {
-            color: #003366; /* Darker blue for the heading */
+            color: #003366; 
             margin-bottom: 20px;
             text-align: center;
         }
 
         fieldset {
-            border: 2px solid #0056b3; /* Blue border for the fieldset */
+            border: 2px solid #0056b3;
             border-radius: 8px;
             padding: 20px;
             width: 100%;
             max-width: 500px;
-            background-color: #ffffff; /* White background for the form */
+            background-color: #ffffff; 
         }
 
         legend {
             font-weight: bold;
-            color: #0056b3; /* Dark blue for the legend */
+            color: #0056b3;
             font-size: 1.5em;
         }
 
@@ -71,7 +71,7 @@ if (!isset($_SESSION['email'])) {
             font-weight: bold;
             display: block;
             margin-bottom: 5px;
-            color: #333; /* Darker gray for labels */
+            color: #333; 
         }
 
         input[type="text"],
@@ -83,40 +83,40 @@ if (!isset($_SESSION['email'])) {
             border: 1px solid #ccc;
             border-radius: 4px;
             transition: border-color 0.3s;
-            box-sizing: border-box; /* Ensure padding is included in width */
+            box-sizing: border-box; 
         }
 
         input[type="text"]:focus,
         textarea:focus,
         input[type="file"]:focus {
-            border-color: #0056b3; /* Change border color on focus to blue */
+            border-color: #0056b3; 
             outline: none;
         }
 
         button {
-            background-color: #0056b3; /* Blue background for button */
+            background-color: #0056b3; 
             color: white;
             border: none;
             padding: 12px 20px;
             cursor: pointer;
             border-radius: 5px;
             transition: background-color 0.3s;
-            font-size: 16px; /* Increase font size */
-            width: 100%; /* Ensure button takes the full width */
+            font-size: 16px; 
+            width: 100%; 
         }
 
         button:hover {
-            background-color: #004494; /* Darker blue on hover */
+            background-color: #004494; 
         }
 
-        /* Add responsiveness */
+     
         @media (max-width: 600px) {
             form {
                 padding: 20px;
             }
 
             button {
-                font-size: 14px; /* Reduce button font size for smaller screens */
+                font-size: 14px;
             }
         }
     </style>
