@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $is_super_admin) {
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-        // Check if image file is an actual image
+       
         $check = getimagesize($_FILES['profile_picture']['tmp_name']);
         if ($check !== false) {
             $uploadOk = 1;
@@ -180,7 +180,7 @@ function sendRegistrationEmail($email, $plainPassword) {
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px; /* Set a fixed width for the form */
+            width: 300px; 
         }
 
         h2 {
@@ -201,17 +201,17 @@ function sendRegistrationEmail($email, $plainPassword) {
         }
 
         button {
-            background-color: #007bff; /* Blue button color */
+            background-color: #007bff; 
             color: white;
             padding: 10px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            width: 100%; /* Full width for the button */
+            width: 100%; 
         }
 
         button:hover {
-            background-color: #0056b3; /* Darker blue on hover */
+            background-color: #0056b3; 
         }
 
         .error {

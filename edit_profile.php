@@ -87,7 +87,7 @@ $conn->close();
         }
 
         h2 {
-            color: #007bff; /* Blue color for heading */
+            color: #007bff; 
         }
 
         form {
@@ -106,17 +106,17 @@ $conn->close();
         }
 
         button {
-            background-color: #007bff; /* Blue button color */
+            background-color: #007bff; 
             color: white;
             padding: 10px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            width: 100%; /* Full width for the button */
+            width: 100%; 
         }
 
         button:hover {
-            background-color: #0056b3; /* Darker blue on hover */
+            background-color: #0056b3; 
         }
 
         .message {

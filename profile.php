@@ -1,13 +1,13 @@
 <?php
 session_start();
 
-// Check if the user is logged in
+
 if (!isset($_SESSION['email'])) {
-    header("Location: login.php"); // Redirect to login if not logged in
+    header("Location: login.php"); 
     exit();
 }
 
-// Database connection
+
 $host = 'localhost';
 $dbname = 'meru doctors plaza';
 $user = 'root';
@@ -19,7 +19,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Fetch user profile data
+
 $email = $_SESSION['email'];
 $stmt = $conn->prepare("SELECT national_id FROM members WHERE email = ?");
 $stmt->bind_param("s", $email);
@@ -94,7 +94,7 @@ $conn->close();
         }
 
         h2 {
-            color: #007bff; /* Blue color for heading */
+            color: #007bff; 
         }
     </style>
 </head>
@@ -115,12 +115,11 @@ $conn->close();
         <h2>User Profile</h2>
         <p><strong>Email:</strong> <?php echo htmlspecialchars($email); ?></p>
         <p><strong>National ID:</strong> <?php echo htmlspecialchars($national_id); ?></p>
-        <!-- Add more profile fields as needed -->
+        
     </div>
 
     <script>
-        // Optional: Add any JavaScript functionality if needed
-        // Example: Toggle the dropdown on click
+        
         document.querySelector('.dropdown-btn').addEventListener('click', function() {
             var content = document.querySelector('.dropdown-content');
             content.style.display = content.style.display === 'block' ? 'none' : 'block';

@@ -5,7 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 
-$timeout_duration = 1800; // 30 minutes
+$timeout_duration = 1800; 
 
 
 if (isset($_SESSION['last_activity'])) {
