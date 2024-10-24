@@ -25,6 +25,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($stmt->rowCount() > 0) {
             
             echo "You have already subscribed!";
+           
+            
         } else {
             
             $stmt = $pdo->prepare("INSERT INTO subscribers (email) VALUES (:email)");
@@ -55,7 +57,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $mail->AltBody = 'Thank you for subscribing to Meru Doctors\' Plaza. We will keep you updated.';
 
                 $mail->send();
-                echo "Thank you for subscribing!";
+                header("Location: success.html");
+                exit();
             } catch (Exception $e) {
                 echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
             }

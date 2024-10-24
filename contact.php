@@ -23,7 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             VALUES ('$name', '$email', '$subject', '$message', NOW())";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Your message has been sent successfully!";
+        header("Location: contact_success.html");
+                exit();
        
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;

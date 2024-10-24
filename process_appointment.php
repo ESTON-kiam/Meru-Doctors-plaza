@@ -34,8 +34,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
        
         if ($stmt->execute()) {
             
-            echo "Appointment successfully created!";
-           
+            header("Location: appointment_successful.html");
+    exit(); 
         } else {
             echo "Error: " . $stmt->error;
         }

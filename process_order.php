@@ -67,7 +67,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             
             $mail->send();
-            echo 'Your order has been placed successfully, and a confirmation email has been sent.';
+            header("Location: order_success.html");
+            exit(); 
         } catch (Exception $e) {
             echo "Email could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
