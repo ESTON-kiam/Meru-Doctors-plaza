@@ -191,7 +191,7 @@ $conn->close();
     
 
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">2024</strong> <span>All Rights Reserved</span></p>
+      <p>© <span>Copyright</span> <strong class="px-1 sitename"><?php echo date("Y"); ?></strong> <span>All Rights Reserved</span></p>
       <div class="credits">
         Designed by <a href="https://estonkiama.netlify.app/">Eston Kiama</a>
       </div>
