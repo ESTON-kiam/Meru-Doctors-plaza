@@ -959,7 +959,7 @@
               <p>You can book an appointment by calling our reception desk, using our online booking system on our website, or by visiting us in person at the Plaza.</p>
             </div>
             <i class="faq-toggle bi bi-chevron-right"></i>
-          </div><!-- End Faq item-->
+          </div>
   
           <div class="faq-item">
             <h3>Where is Meru Doctors Plaza located?</h3>
@@ -967,7 +967,7 @@
               <p>Meru Doctors Plaza is located in Meru town, along Njuri Ncheke Street, opposite Meru County Headquarters.</p>
             </div>
             <i class="faq-toggle bi bi-chevron-right"></i>
-          </div><!-- End Faq item-->
+          </div>
   
           <div class="faq-item">
             <h3>What should I bring to my appointment?</h3>
@@ -975,30 +975,26 @@
               <p>Please bring your ID, insurance card, and any medical records relevant to your condition. If you are a new patient, you may also need to complete a registration form upon arrival.</p>
             </div>
             <i class="faq-toggle bi bi-chevron-right"></i>
-          </div><!-- End Faq item-->
+          </div>
   
         </div>
   
-      </div><!-- End Faq Column-->
-  
+      </div>
     </div>
   
   </div>
 
-</section><!-- /Faq Section --> 
-
-    <!-- Contact Section -->
+</section>
     <section id="contact" class="contact section">
 
-      <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Contact</h2>
         <p>Located within Meru C.B.D we are the best location for bespoke treatments. Our experienced dermatologist and nurses are dedicated to helping you look and feel your best. Using proven and innovative skin care treatment, our doctors provide a range of safe and advanced treatment for all our patients.</p>
-      </div><!-- End Section Title -->
+      </div>
 
       <div class="mb-5" data-aos="fade-up" data-aos-delay="200">
         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15959.268333963459!2d37.655057!3d0.0451149!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x178821ea25e67a7d%3A0xcaef0f8a3fc108b0!2sMeru%20Doctors%20Plaza%20Ltd!5e0!3m2!1sen!2ske!4v1707987751672!5m2!1sen!2ske" width="1600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div><!-- End Google Maps -->
+      </div>
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
@@ -1012,7 +1008,7 @@
                   <h3>Address</h3>
                   <p>Meru,I&M Building Second Floor, Meru, Eastern Province,2828-60200, Meru, Eastern</p>
                 </div>
-              </div><!-- End Info Item -->
+              </div>
 
               <div class="col-md-6">
                 <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="300">
@@ -1020,7 +1016,7 @@
                   <h3>Call Us</h3>
                   <p> +2542345678</p>
                 </div>
-              </div><!-- End Info Item -->
+              </div>
 
               <div class="col-md-6">
                 <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="400">
@@ -1028,7 +1024,7 @@
                   <h3>Email Us</h3>
                   <p>merudocinfo@gmail.com</p>
                           </div>
-              </div><!-- End Info Item -->
+              </div>
 
             </div>
           </div>
@@ -1064,17 +1060,16 @@
               </div>
             </form>
             
-          </div><!-- End Contact Form -->
+          </div>
 
         </div>
 
       </div>
 
-    </section><!-- /Contact Section -->
-     <!-- Insurance Partners Section -->
+    </section>
      <section id="gallery" class="gallery section">
 
-      <!-- Section Title -->
+      
       <div class="container section-title" data-aos="fade-up">
         <h2><b>Insurance Partners</b></h2>
         <p>Our Insurance Partners</p>
@@ -1137,7 +1132,7 @@
 
       </div>
 
-    </section><!-- /Gallery Section -->
+    </section>
     <h2 style="color: blue; text-align: center;">Subscribe to Meru Doctors' Plaza</h2>
     <form action="subscibe.php" method="post" style="background-color: lightgreen; padding: 20px; border-radius: 8px; width: 300px; margin: 0 auto; text-align: center;">
         <label for="email" style="color: blue;">Enter your email:</label>
@@ -1182,14 +1177,12 @@
     </div>
 
   </footer>
-
-  <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Preloader -->
+ 
   <div id="preloader"></div>
 
-  <!-- Vendor JS Files -->
+ 
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>

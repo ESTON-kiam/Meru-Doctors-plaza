@@ -7,7 +7,6 @@ if (!isset($_SESSION['email'])) {
     exit(); 
 } 
 
-
 $host = 'localhost'; 
 $dbname = 'meru doctors plaza'; 
 $user = 'root'; 

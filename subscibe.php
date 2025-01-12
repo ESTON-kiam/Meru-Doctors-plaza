@@ -25,15 +25,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($stmt->rowCount() > 0) {
             
             echo "You have already subscribed!";
-           
-            
+                       
         } else {
             
             $stmt = $pdo->prepare("INSERT INTO subscribers (email) VALUES (:email)");
             $stmt->bindParam(':email', $email);
             $stmt->execute();
-
-            
             $mail = new PHPMailer(true);
 
             try {
@@ -45,12 +42,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $mail->Password = 'pxmh wzte wcuy adnc'; 
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; 
                 $mail->Port = 587;
-
                 
                 $mail->setFrom('no-reply@merudoctorsplaza.com', 'Meru Doctors\' Plaza'); 
                 $mail->addAddress($email); 
 
-                
                 $mail->isHTML(true); 
                 $mail->Subject = 'Thank you for subscribing!';
                 $mail->Body = 'Dear Subscriber,<br><br>Thank you for subscribing to Meru Doctors\' Plaza.<br>We will keep you updated.<br><br>Best Regards,<br>Meru Doctors\' Plaza';
