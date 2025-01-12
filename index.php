@@ -639,14 +639,14 @@
 </section>
 
 
-<!-- Testimonials Section -->
+
 <section id="testimonials" class="testimonials section">
 
-  <!-- Section Title -->
+
   <div class="container section-title" data-aos="fade-up">
     <h2>What Our Patients Say</h2>
     <p>Explore the stories of individuals who have entrusted their well-being to Meru Doctors' Plaza. Discover their heartfelt testimonials and gain insight into the compassionate care we deliver.</p>
-  </div><!-- End Section Title -->
+  </div>
 
   <div class="container" data-aos="fade-up" data-aos-delay="100">
 
@@ -679,7 +679,7 @@
       <div class="swiper-wrapper">
 
         <div class="swiper-slide">
-          <div class="testimonial-item" "="">
+          <div class="testimonial-item" >
         <p>
           <i class=" bi bi-quote quote-icon-left"></i>
             <span>I received exceptional care at Meru Doctors' Plaza. The team's dedication and expertise ensured a quick recovery. Grateful for their compassionate service.
@@ -690,7 +690,7 @@
             <h3>Saul Goodman</h3>
             <h4>Ceo &amp; Founder</h4>
           </div>
-        </div><!-- End testimonial item -->
+        </div>
 
         <div class="swiper-slide">
           <div class="testimonial-item">
@@ -703,7 +703,7 @@
             <h3>Sara Wilsson</h3>
             <h4>Designer</h4>
           </div>
-        </div><!-- End testimonial item -->
+        </div>
 
         <div class="swiper-slide">
           <div class="testimonial-item">
@@ -716,7 +716,7 @@
             <h3>Jena Karlis</h3>
             <h4>Store Owner</h4>
           </div>
-        </div><!-- End testimonial item -->
+        </div>
 
         <div class="swiper-slide">
           <div class="testimonial-item">
@@ -729,7 +729,7 @@
             <h3>Matt Brandon</h3>
             <h4>Freelancer</h4>
           </div>
-        </div><!-- End testimonial item -->
+        </div>
 
         <div class="swiper-slide">
           <div class="testimonial-item">
@@ -742,7 +742,7 @@
             <h3>John Larson</h3>
             <h4>Entrepreneur</h4>
           </div>
-        </div><!-- End testimonial item -->
+        </div>
 
       </div>
       <div class="swiper-pagination"></div>
@@ -750,7 +750,7 @@
 
   </div>
 
-</section><!-- /Testimonials Section -->
+</section>
 
 
 
@@ -840,10 +840,10 @@
     
       </div>
     </section>
-    <!-- Gallery Section -->
+    
     <section id="gallery" class="gallery section">
 
-      <!-- Section Title -->
+      
       <div class="container section-title" data-aos="fade-up">
         <h2>Gallery</h2>
       <p>Explore our collection of captivating images. From breathtaking landscapes to charming interiors, our gallery offers a visual feast.</p>
@@ -901,17 +901,14 @@
 
       </div>
 
-    </section><!-- /Gallery Section -->
-
-    
- <!-- Faq Section -->
+    </section>
  <section id="faq" class="faq section light-background">
 
-  <!-- Section Title -->
+  
   <div class="container section-title" data-aos="fade-up">
     <h2>Frequently Asked Questions</h2>
     <p>Here are some of the most frequently asked questions about Meru Doctors Plaza.</p>
-  </div><!-- End Section Title -->
+  </div>
   
   <div class="container">
   

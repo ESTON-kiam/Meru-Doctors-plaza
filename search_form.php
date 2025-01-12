@@ -23,7 +23,6 @@ if (isset($_GET['query'])) {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,7 +63,6 @@ if (isset($_GET['query'])) {
             </div>
         </div>
     </div>
-
     <script>
         const searchResults = <?php echo json_encode($searchResults); ?>;
 
