@@ -7,7 +7,6 @@ if (!isset($_SESSION['email'])) {
     exit();
 }
 
-
 $host = 'localhost';
 $dbname = 'meru doctors plaza';
 $user = 'root';
@@ -30,7 +29,6 @@ $stmt->close();
 
 $conn->close();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 

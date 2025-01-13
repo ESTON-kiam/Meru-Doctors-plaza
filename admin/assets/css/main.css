@@ -133,7 +133,7 @@ th, td {
   --surface-color: #65c9cd;
 }
 
-/* Smooth scroll */
+
 :root {
   scroll-behavior: smooth;
 }
@@ -166,8 +166,7 @@ h6 {
   font-family: var(--heading-font);
 }
 
-/* Pulsating Play Button
-------------------------------*/
+
 .pulsating-play-btn {
   width: 94px;
   height: 94px;
@@ -245,11 +244,10 @@ h6 {
   }
 }
 
-/* PHP Email Form Messages
-------------------------------*/
+
 .php-email-form .error-message {
   display: none;
-  background: #df1529;
+  background: blue;
   color: #ffffff;
   text-align: left;
   padding: 15px;
@@ -297,9 +295,7 @@ h6 {
   }
 }
 
-/*--------------------------------------------------------------
-# Global Header
---------------------------------------------------------------*/
+
 .header {
   color: var(--default-color);
   background-color: var(--background-color);
@@ -354,10 +350,7 @@ h6 {
   background: color-mix(in srgb, var(--accent-color), transparent 15%);
 }
 
-/*--------------------------------------------------------------
-# Navigation Menu
---------------------------------------------------------------*/
-/* Navmenu - Desktop */
+
 @media (min-width: 1200px) {
   .navmenu {
     padding: 0;
@@ -465,7 +458,7 @@ h6 {
   }
 }
 
-/* Navmenu - Mobile */
+
 @media (max-width: 1199px) {
   .mobile-nav-toggle {
     color: var(--nav-color);
@@ -592,9 +585,7 @@ h6 {
   }
 }
 
-/*--------------------------------------------------------------
-# Global Footer
---------------------------------------------------------------*/
+
 .footer {
   color: var(--default-color);
   background-color: var(--background-color);
@@ -742,9 +733,7 @@ h6 {
   }
 }
 
-/*--------------------------------------------------------------
-# Scroll Top Button
---------------------------------------------------------------*/
+
 .scroll-top {
   position: fixed;
   visibility: hidden;
@@ -775,18 +764,14 @@ h6 {
   opacity: 1;
 }
 
-/*--------------------------------------------------------------
-# Disable aos animation delay on mobile devices
---------------------------------------------------------------*/
+
 @media screen and (max-width: 768px) {
   [data-aos-delay] {
     transition-delay: 0 !important;
   }
 }
 
-/*--------------------------------------------------------------
-# Global Page Titles & Breadcrumbs
---------------------------------------------------------------*/
+
 .page-title {
   color: var(--default-color);
   background-color: var(--background-color);
@@ -829,9 +814,7 @@ h6 {
   color: color-mix(in srgb, var(--default-color), transparent 70%);
 }
 
-/*--------------------------------------------------------------
-# Global Sections
---------------------------------------------------------------*/
+
 section,
 .section {
   color: var(--default-color);
@@ -849,9 +832,7 @@ section,
   }
 }
 
-/*--------------------------------------------------------------
-# Global Section Titles
---------------------------------------------------------------*/
+
 .section-title {
   text-align: center;
   padding-bottom: 60px;
@@ -883,9 +864,7 @@ section,
   margin-bottom: 0;
 }
 
-/*--------------------------------------------------------------
-# Hero Section
---------------------------------------------------------------*/
+
 .hero {
   padding: 0;
 }
@@ -1050,9 +1029,7 @@ section,
   background: var(--accent-color);
 }
 
-/*--------------------------------------------------------------
-# Featured Services Section
---------------------------------------------------------------*/
+
 .featured-services .service-item {
   background-color: var(--surface-color);
   box-shadow: 0px 0 25px 0 rgba(0, 0, 0, 0.1);
@@ -1112,9 +1089,7 @@ section,
   border-radius: 0px;
 }
 
-/*--------------------------------------------------------------
-# Call To Action Section
---------------------------------------------------------------*/
+
 .call-to-action {
   padding: 80px 0;
   position: relative;
@@ -1156,9 +1131,7 @@ section,
   border: 2px solid var(--accent-color);
 }
 
-/*--------------------------------------------------------------
-# About Section
---------------------------------------------------------------*/
+
 .about .content h3 {
   font-size: 1.75rem;
   font-weight: 700;
@@ -1191,9 +1164,6 @@ section,
   top: calc(50% - 47px);
 }
 
-/*--------------------------------------------------------------
-# Stats Section
---------------------------------------------------------------*/
 .stats .stats-item {
   background-color: var(--surface-color);
   box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);
@@ -1221,9 +1191,7 @@ section,
   font-size: 16px;
 }
 
-/*--------------------------------------------------------------
-# Features Section
---------------------------------------------------------------*/
+
 .features .features-image {
   position: relative;
   min-height: 400px;
@@ -1304,9 +1272,7 @@ section,
   margin-bottom: 0;
 }
 
-/*--------------------------------------------------------------
-# Services Section
---------------------------------------------------------------*/
+
 .services .service-item {
   text-align: center;
   padding: 20px;
@@ -1365,9 +1331,7 @@ section,
   color: var(--accent-color);
 }
 
-/*--------------------------------------------------------------
-# Appointment Section
---------------------------------------------------------------*/
+
 .appointment .php-email-form {
   width: 100%;
 }
@@ -1422,9 +1386,7 @@ section,
   background: color-mix(in srgb, var(--accent-color) 90%, white 15%);
 }
 
-/*--------------------------------------------------------------
-# Tabs Section
---------------------------------------------------------------*/
+
 .tabs {
   overflow: hidden;
 }
@@ -1484,9 +1446,6 @@ section,
   }
 }
 
-/*--------------------------------------------------------------
-# Testimonials Section
---------------------------------------------------------------*/
 .testimonials .testimonials-carousel,
 .testimonials .testimonials-slider {
   overflow: hidden;
@@ -1571,9 +1530,7 @@ section,
   background-color: var(--accent-color);
 }
 
-/*--------------------------------------------------------------
-# Doctors Section
---------------------------------------------------------------*/
+
 .doctors .team-member {
   background-color: var(--surface-color);
   overflow: hidden;
@@ -1642,9 +1599,7 @@ section,
   bottom: 15px;
 }
 
-/*--------------------------------------------------------------
-# Gallery Section
---------------------------------------------------------------*/
+
 .gallery {
   overflow: hidden;
 }
@@ -1689,9 +1644,7 @@ section,
   }
 }
 
-/*--------------------------------------------------------------
-# Pricing Section
---------------------------------------------------------------*/
+
 .pricing .pricing-item {
   background-color: var(--surface-color);
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
@@ -1796,9 +1749,7 @@ section,
   padding: 1px 0 3px 0;
 }
 
-/*--------------------------------------------------------------
-# Faq Section
---------------------------------------------------------------*/
+
 .faq .faq-container .faq-item {
   background-color: var(--surface-color);
   position: relative;
@@ -1880,9 +1831,7 @@ section,
   color: var(--accent-color);
 }
 
-/*--------------------------------------------------------------
-# Contact Section
---------------------------------------------------------------*/
+
 .contact .info-item {
   background-color: var(--surface-color);
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
@@ -1966,9 +1915,7 @@ section,
   background: color-mix(in srgb, var(--accent-color), transparent 20%);
 }
 
-/*--------------------------------------------------------------
-# Service Details Section
---------------------------------------------------------------*/
+
 .service-details .services-list {
   background-color: var(--surface-color);
   padding: 10px 30px;
@@ -2032,9 +1979,6 @@ section,
   color: var(--accent-color);
 }
 
-/*--------------------------------------------------------------
-# Starter Section Section
---------------------------------------------------------------*/
 .starter-section {
-  /* Add your styles here */
+ 
 }

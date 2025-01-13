@@ -69,8 +69,8 @@
            
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
-<a class="cta-btn" href="index.html#appointment">Make an Appointment</a>
-<a class="cta-btn" href="index.html#buy">Buy Medicine</a>
+<a class="cta-btn" href="index.php#appointment">Make an Appointment</a>
+<a class="cta-btn" href="index.php#buy">Buy Medicine</a>
 
       </div>
 
@@ -1011,7 +1011,7 @@
                 <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="300">
                   <i class="bi bi-telephone"></i>
                   <h3>Call Us</h3>
-                  <p> +2542345678</p>
+                  <p> +25470565626</p>
                 </div>
               </div>
 

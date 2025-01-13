@@ -168,7 +168,7 @@ $conn->close();
             <th>Email</th>
             <th>Subject</th>
             <th>Message</th>
-            <th>Created At</th>
+            <th>Message Sent on</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -190,10 +190,10 @@ $conn->close();
     </div>
   </footer>
 
-<!-- Scroll Top -->
+
 <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-<!-- Preloader -->
+
 <div id="preloader"></div>
 
 

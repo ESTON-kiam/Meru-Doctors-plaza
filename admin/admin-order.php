@@ -175,7 +175,7 @@ $conn->close();
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
-            <th>Message</th>
+            <th>The Orders</th>
             <th>Order_Date</th>
             <th>Action</th>
           </tr>

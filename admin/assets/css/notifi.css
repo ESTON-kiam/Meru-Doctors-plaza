@@ -6,24 +6,24 @@
             background-color: #f4f4f4;
         }
 
-        /* Notification Bell Styles */
+        
         .notification-bell {
             position: relative;
             cursor: pointer;
-            margin: 20px; /* Adjust for spacing */
-            float: right; /* Align to the right */
+            margin: 20px;
+            float: right; 
         }
 
         .notification-bell i {
             font-size: 24px;
-            color: #0056b3; /* Blue color for the bell icon */
+            color: #0056b3;
         }
 
         .notification-count {
             position: absolute;
             top: -5px;
             right: -10px;
-             /* Notification bubble color */
+            
             color: white;
             border-radius: 50%;
             padding: 5px 8px;
@@ -31,18 +31,18 @@
             font-weight: bold;
         }
 
-        /* Notification Dropdown */
+        
         .notification-dropdown {
-            display: none; /* Hidden by default */
+            display: none; 
             position: absolute;
             right: 0;
             background: white;
             box-shadow: gray;
             border-radius: 4px;
-            z-index: 1000; /* Above other elements */
-            min-width: 200px; /* Minimum width */
-            max-height: 300px; /* Max height */
-            overflow-y: auto; /* Scroll if needed */
+            z-index: 1000; 
+            min-width: 200px; 
+            max-height: 300px; 
+            overflow-y: auto; 
         }
 
         .notification-dropdown ul {
@@ -53,14 +53,13 @@
 
         .notification-dropdown li {
             padding: 10px;
-            border-bottom: 1px solid #ddd; /* Divider */
+            border-bottom: 1px solid #ddd; 
         }
 
         .notification-dropdown li:last-child {
-            border-bottom: none; /* Remove last border */
+            border-bottom: none; 
         }
 
         .notification-dropdown li:hover {
-            background: #f0f0f0; /* Highlight on hover */
+            background: #f0f0f0; 
         }
- 

@@ -185,7 +185,7 @@ $conn->close();
           <th>Department</th>
           <th>Doctor</th>
           <th>Message</th>
-          <th>Created At</th>
+          <th>Date Of application</th>
           <th>Comment</th> 
           <th>Actions</th>
         </tr>
