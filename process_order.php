@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             
             $mail->send();
-            header("Location: order_success.html");
+            header("Location: index.php");
             exit(); 
         } catch (Exception $e) {
             echo "Email could not be sent. Mailer Error: {$mail->ErrorInfo}";
