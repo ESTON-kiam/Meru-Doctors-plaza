@@ -317,66 +317,54 @@
                   our team will assist you promptly.</p>
           </div>
 
-          <form action="process_appointment.php" method="post" style="font-family: Arial, sans-serif; padding: 20px; border: 1px solid #ddd; border-radius: 5px; width: 100%; max-width: 600px; margin: auto;">
-    
-            <div style="margin-bottom: 15px;">
-                <label for="name" style="display: block; font-weight: bold; color: #006400;">Your Name</label>
-                <input type="text" name="name" id="name" placeholder="Your Name" required autocomplete="name" 
-                       style="width: 100%; padding: 10px; border: 1px solid #006400; border-radius: 5px;">
+          <form  method="post" action="process_appointment.php" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
+          <div class="row">
+            <div class="col-md-4 form-group">
+                <label for="name"></label><input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
             </div>
-        
-            <div style="margin-bottom: 15px;">
-                <label for="nationalID" style="display: block; font-weight: bold; color: #006400;">National ID</label>
-                <input type="text" name="national_id" id="nationalID" placeholder="Your National ID" required autocomplete="off" 
-                       style="width: 100%; padding: 10px; border: 1px solid #006400; border-radius: 5px;">
+            <div class="col-md-4 form-group mt-3 mt-md-0">
+                <label for="email"></label><input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
             </div>
-        
-            <div style="margin-bottom: 15px;">
-                <label for="phone" style="display: block; font-weight: bold; color: #006400;">Phone Number</label>
-                <input type="tel" name="phone" id="phone" placeholder="Your Phone" required autocomplete="tel" 
-                       style="width: 100%; padding: 10px; border: 1px solid #006400; border-radius: 5px;">
+            <div class="col-md-4 form-group mt-3 mt-md-0">
+                <label for="phone"></label><input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone" required>
             </div>
-        
-            <div style="margin-bottom: 15px;">
-                <label for="date" style="display: block; font-weight: bold; color: #006400;">Appointment Date</label>
-                <input type="date" name="appointment_date" id="date" placeholder="Appointment Date" required autocomplete="off" 
-                       style="width: 100%; padding: 10px; border: 1px solid #006400; border-radius: 5px;">
+          </div>
+          <div class="row">
+            <div class="col-md-4 form-group mt-3">
+                <label for="date"></label><input type="date" name="date" class="form-control datepicker" id="date" placeholder="Appointment Date" required>
             </div>
-        
-            <div style="margin-bottom: 15px;">
-                <label for="department" style="display: block; font-weight: bold; color: #006400;">Department</label>
-                <select name="department" id="department" required 
-                        style="width: 100%; padding: 10px; border: 1px solid #006400; border-radius: 5px;">
-                    <option value="">Select Department</option>
+            <div class="col-md-4 form-group mt-3">
+                <label for="department"></label><select name="department" id="department" class="form-select">
+                <option value="">Select Department</option>
                     <option value="Pediatrics">Pediatrics</option>
                     <option value="Cardiology">Cardiology</option>
                     <option value="Neurology">Neurology</option>
                     <option value="Hepatology">Hepatology</option>
                     <option value="Dentistry">Dentistry</option>
-                </select>
+              </select>
             </div>
-        
-            <div style="margin-bottom: 15px;">
-                <label for="doctor" style="display: block; font-weight: bold; color: #006400;">Doctor</label>
-                <select name="doctor" id="doctor" required 
-                        style="width: 100%; padding: 10px; border: 1px solid #006400; border-radius: 5px;">
-                    <option value="">Select Doctor</option>
+            <div class="col-md-4 form-group mt-3">
+                <label for="doctor"></label><select name="doctor" id="doctor" class="form-select">
+                <option value="">Select Doctor</option>
                     <option value="Dr. Amanda Jenson">Dr. Amanda Jenson</option>
                     <option value="Dr. William Anderson">Dr. William Anderson</option>
                     <option value="Dr. Sarah Johnson">Dr. Sarah Johnson</option>
                     <option value="Dr. Walter White">Dr. Walter White</option>
-                </select>
+              </select>
             </div>
-        
-            <div style="margin-bottom: 15px;">
-                <label for="message" style="display: block; font-weight: bold; color: #006400;">Message (Optional)</label>
-                <textarea name="message" rows="5" id="message" placeholder="Message (Optional)" autocomplete="off" 
-                          style="width: 100%; padding: 10px; border: 1px solid #006400; border-radius: 5px;"></textarea>
-            </div>
-        
-            <div style="text-align: center;">
-                <button type="submit" style="background-color: #006400; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">Make an Appointment</button>
-            </div>
+          </div>
+
+          <div class="form-group mt-3">
+              <label>
+                  <textarea class="form-control" name="message" rows="5" placeholder="Message (Optional)"></textarea>
+              </label>
+          </div>
+          <div class="my-3">
+            <div class="loading">Loading</div>
+            <div class="error-message"></div>
+            <div class="sent-message">Your appointment request has been sent successfully. Thank you!</div>
+          </div>
+          <div class="text-center"><button type="submit">Make an Appointment</button></div>
         </form>
         
 
@@ -389,39 +377,34 @@
                   
                 </div>
       
-                <form action="process_order.php" method="post" style="font-family: Arial, sans-serif; padding: 20px; border: 1px solid #ddd; border-radius: 5px; width: 100%; max-width: 600px; margin: auto;">
-                    
-                  <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 15px;">
-                      <div style="flex: 1;">
-                          <label for="name" style="display: block; font-weight: bold; color: #006400;">Your Name</label>
-                          <input type="text" name="name" id="name" placeholder="Your Name" required autocomplete="name" 
-                                 style="width: 100%; padding: 10px; border: 1px solid #006400; border-radius: 5px;">
-                      </div>
-              
-                      <div style="flex: 1;">
-                          <label for="email" style="display: block; font-weight: bold; color: #006400;">Your Email</label>
-                          <input type="email" name="email" id="email" placeholder="Your Email" required autocomplete="email" 
-                                 style="width: 100%; padding: 10px; border: 1px solid #006400; border-radius: 5px;">
-                      </div>
-              
-                      <div style="flex: 1;">
-                          <label for="phone" style="display: block; font-weight: bold; color: #006400;">Your Phone</label>
-                          <input type="tel" name="phone" id="phone" placeholder="Your Phone" required autocomplete="tel" 
-                                 style="width: 100%; padding: 10px; border: 1px solid #006400; border-radius: 5px;">
-                      </div>
-                  </div>
-              
-                  <div style="margin-bottom: 15px;">
-                      <label for="message" style="display: block; font-weight: bold; color: #006400;">Send your Order</label>
-                      <textarea name="message" rows="5" id="message" placeholder="Send your Order" required 
-                                style="width: 100%; padding: 10px; border: 1px solid #006400; border-radius: 5px;"></textarea>
-                  </div>
-              
-                  <div style="text-align: center;">
-                      <button type="submit" style="background-color: #006400; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">Buy Medicines</button>
-                  </div>
-              </form>
-              
+                <form  method="post" action="process_order.php" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
+          <div class="row">
+            <div class="col-md-4 form-group">
+                <label for="name"></label><input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+            </div>
+            <div class="col-md-4 form-group mt-3 mt-md-0">
+                <label for="email"></label><input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+            </div>
+            <div class="col-md-4 form-group mt-3 mt-md-0">
+                <label for="phone"></label><input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone" required>
+            </div>
+          </div>
+         
+            
+           
+
+          <div class="form-group mt-3">
+              <label>
+                  <textarea class="form-control" name="message" rows="5" placeholder="Send your Order "></textarea>
+              </label>
+          </div>
+          <div class="my-3">
+            <div class="loading">Loading</div>
+            <div class="error-message"></div>
+            <div class="sent-message">Your order request has been sent successfully. Thank you!</div>
+          </div>
+          <div class="text-center"><button type="submit">Buy Medicine</button></div>
+        </form>
 
 
       </div>
@@ -1027,34 +1010,27 @@
           </div>
 
           <div class="col-lg-6"><h1>Send Us a Message</h1>
-            <form action="contact.php" method="post"  style="padding: 20px; background-color: #e6f7ff; border-radius: 10px;">
-              <div class="row gy-4">
-                
-                <div class="col-md-6">
-                  <input type="text" name="name" placeholder="Your Name" required="" 
-                  style="border: 2px solid green; border-radius: 5px; padding: 10px; color: blue;">
+          <form action="contact.php" method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required="">
                 </div>
-            
-                <div class="col-md-6">
-                  <input type="email"" name="email" placeholder="Your Email" required="" 
-                  style="border: 2px solid green; border-radius: 5px; padding: 10px; color: blue;">
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required="">
                 </div>
-            
-                <div class="col-md-12">
-                  <input type="text"  name="subject" placeholder="Subject" required="" 
-                  style="border: 2px solid green; border-radius: 5px; padding: 10px; color: blue;">
-                </div>
-            
-                <div class="col-md-12">
-                  <textarea  name="message" rows="4" placeholder="Message" required="" 
-                  style="border: 2px solid green; border-radius: 5px; padding: 10px; color: blue;"></textarea>
-                </div>
-            
-                <div class="col-md-12 text-center">
-                  <button type="submit" style="margin-top: 15px; padding: 10px 20px; background-color: green; color: white; border: none; border-radius: 5px; cursor: pointer;">Send Message</button>
-                </div>
-            
               </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required="">
+              </div>
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="7" placeholder="Message" required=""></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Send Message</button></div>
             </form>
             
           </div>
@@ -1130,12 +1106,16 @@
       </div>
 
     </section>
-    <h2 style="color: blue; text-align: center;">Subscribe to Meru Doctors' Plaza</h2>
-    <form action="subscibe.php" method="post" style="background-color: lightgreen; padding: 20px; border-radius: 8px; width: 300px; margin: 0 auto; text-align: center;">
-        <label for="email" style="color: blue;">Enter your email:</label>
-        <input type="email" name="email" placeholder="Your Email"id="email" required style="margin-top: 10px; padding: 8px; border: 2px solid blue; border-radius: 5px; width: 90%;">
-        <button type="submit" style="margin-top: 15px; padding: 10px 20px; background-color: green; color: white; border: none; border-radius: 5px; cursor: pointer;">Subscribe</button>
-    </form>
+    <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Our Newsletter</h4>
+            <p>Subscribe to Meru Doctors' Plaza</p>
+            <form action="subscribe.php" method="post">
+                <label>
+                    <input type="email" name="email" placeholder="Enter Your Email" required>
+                </label><input type="submit" value="Subscribe">
+            </form>
+
+          </div>
     
   </main>
 
