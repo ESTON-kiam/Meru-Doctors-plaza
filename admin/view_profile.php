@@ -85,8 +85,6 @@ try {
             <p><strong>Email:</strong> <?php echo htmlspecialchars($email); ?></p> 
             <p><strong>National ID:</strong> <?php echo htmlspecialchars($national_id); ?></p> 
             <img src="<?php echo htmlspecialchars($profile_picture); ?>" alt="Profile Picture" style="width: 150px; height: 150px; border-radius: 50%;"> 
-
-           
         </div> 
         <center><a href="admin-appointment.php">Go back</a></center>
     <?php endif; ?>

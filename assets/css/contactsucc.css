@@ -1,4 +1,4 @@
-/* General Styling */
+
 body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #4CAF50, #007bff);
@@ -9,7 +9,7 @@ body {
     margin: 0;
 }
 
-/* Card Container */
+
 .container {
     background: white;
     padding: 30px;
@@ -20,14 +20,14 @@ body {
     animation: fadeIn 0.8s ease-in-out;
 }
 
-/* Success Icon */
+
 .icon {
     font-size: 60px;
     color: #28a745;
     margin-bottom: 15px;
 }
 
-/* Text Styling */
+
 h2 {
     color: #333;
     font-size: 24px;
@@ -40,7 +40,7 @@ p {
     line-height: 1.6;
 }
 
-/* Button Styling */
+
 .btn {
     display: inline-block;
     padding: 12px 25px;
@@ -58,7 +58,7 @@ p {
     box-shadow: 0 6px 10px rgba(0, 123, 255, 0.3);
 }
 
-/* Fade-in Animation */
+
 @keyframes fadeIn {
     from {
         opacity: 0;

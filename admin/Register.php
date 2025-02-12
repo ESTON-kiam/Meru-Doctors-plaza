@@ -145,7 +145,7 @@ function sendRegistrationEmail($email, $plainPassword) {
         $mail->setFrom('engestonbrandon@gmail.com', 'Meru Doctors Plaza');
         $mail->addAddress($email);
 
-        // Content
+        
         $mail->isHTML(true);
         $mail->Subject = 'Registration Successful';
         $mail->Body = 'Dear user,<br><br>You have been successfully registered.<br>Your password is: ' . $plainPassword . '<br><br>Regards,<br>Meru Doctors Plaza';

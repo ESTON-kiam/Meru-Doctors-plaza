@@ -141,10 +141,10 @@ $conn->close();
        
 
             
-            <!-- Profile dropdown -->
+           
             <li class="dropdown">
               <button class="dropdown-btn">
-                <!-- Display profile picture -->
+               
                 <img src="<?php echo $profile_picture; ?>" alt="Profile Picture" style="width: 30px; height: 30px; border-radius: 50%; vertical-align: middle;">
                 Profile
               </button>
@@ -167,7 +167,7 @@ $conn->close();
 
   <main class="main"><body class="index-page">
   <header id="header" class="header sticky-top">
-    <!-- (header content remains the same) -->
+   
   </header>
 
   
@@ -255,7 +255,7 @@ $conn->close();
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
 
-  <!-- Main JS File -->
+ 
   <script src="assets/js/main.js"></script>
 </body>
 </html>
