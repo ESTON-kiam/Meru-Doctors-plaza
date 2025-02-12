@@ -60,7 +60,7 @@
 
         <nav id="navmenu" class="navmenu">
           <ul>
-          <li><a href="index.php" class="active">Home</a></li>
+          <li><a href="index.php" >Home</a></li>
             <li><a href="about.php">About Us</a></li>
             <li><a href="services.php">Services</a></li>
             <li><a href="department.php">Departments</a></li>
@@ -211,10 +211,6 @@
                 <label for="phone"></label><input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone" required>
             </div>
           </div>
-         
-            
-           
-
           <div class="form-group mt-3">
               <label>
                   <textarea class="form-control" name="message" rows="5" placeholder="Send your Order "></textarea>
@@ -227,8 +223,6 @@
           </div>
           <div class="text-center"><button type="submit">Buy Medicine</button></div>
         </form>
-
-
       </div>
   </section>
  
@@ -267,8 +261,6 @@
       </div>
     </div>
    </div>
-
-
 </div></div>
 
 <div class="container copyright text-center mt-4">

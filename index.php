@@ -63,7 +63,7 @@
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="index.php" class="active">Home</a></li>
+            <li><a href="index.php" >Home</a></li>
             <li><a href="about.php">About Us</a></li>
             <li><a href="services.php">Services</a></li>
             <li><a href="department.php">Departments</a></li>
