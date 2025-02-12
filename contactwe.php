@@ -72,7 +72,11 @@
 <a class="cta-btn" href="services.php#buy">Buy Medicine</a>
 
       </div>
-
+      <div class="whatsapp-button">
+        <a href="https://wa.me/254757196660" target="_blank">
+          <img src="assets/img/gallery/whatsapp.jpeg" alt="Chat with us on WhatsApp" />
+        </a>
+      </div>
     </div>
 
   </header>
@@ -221,16 +225,7 @@
 </div>
 
 </section>
-<div class="col-lg-4 col-md-6 footer-newsletter">
-      <h4>Our Newsletter</h4>
-      <p>Subscribe to Meru Doctors' Plaza</p>
-      <form action="subscribe.php" method="post">
-          <label>
-              <input type="email" name="email" placeholder="Enter Your Email" required>
-          </label><input type="submit" value="Subscribe">
-      </form>
 
-    </div>
 
   
   </main>
@@ -243,6 +238,18 @@
         <a href="index.html" class="logo d-flex align-items-center">
           <span class="sitename">Meru Doctors' Plaza</span>
         </a>
+        <div class="col-lg-4 col-md-6 footer-newsletter">
+        <h4>Our Newsletter</h4>
+        <p>Subscribe to Meru Doctors' Plaza</p>
+            
+            <form action="subscribe.php" method="POST"> 
+                <label>
+                    <input type="email" name="email" placeholder="Enter Your email" required>
+                </label>
+                <input type="submit" value="Subscribe">
+            </form>
+            </div>
+
         <div class="footer-contact pt-3">
           <p>MERU</p>
           <p>Meru,I&M Building Second Floor, Meru, Eastern Province,2828-60200, Meru, Eastern</p>

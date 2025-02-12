@@ -78,7 +78,7 @@ th, td {
 .whatsapp-button {
   position: fixed;
   bottom: 20px; 
-  right: 20px;   
+  left: 10px;   
   z-index: 1000; 
 }
 

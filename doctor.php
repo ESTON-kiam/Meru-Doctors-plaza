@@ -72,7 +72,11 @@
 <a class="cta-btn" href="services.php#buy">Buy Medicine</a>
 
       </div>
-
+      <div class="whatsapp-button">
+        <a href="https://wa.me/254757196660" target="_blank">
+          <img src="assets/img/gallery/whatsapp.jpeg" alt="Chat with us on WhatsApp" />
+        </a>
+      </div>
     </div>
 
   </header>
@@ -310,40 +314,51 @@
 
   
   </main>
+  <footer id="footer" class="footer light-background">
 
-<footer id="footer" class="footer light-background">
+<div class="container footer-top">
+  <div class="row gy-4">
+    <div class="col-lg-4 col-md-6 footer-about">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <span class="sitename">Meru Doctors' Plaza</span>
+      </a>
+      <div class="col-lg-4 col-md-6 footer-newsletter">
+      <h4>Our Newsletter</h4>
+      <p>Subscribe to Meru Doctors' Plaza</p>
+          
+          <form action="subscribe.php" method="POST"> 
+              <label>
+                  <input type="email" name="email" placeholder="Enter Your email" required>
+              </label>
+              <input type="submit" value="Subscribe">
+          </form>
+          </div>
 
-  <div class="container footer-top">
-    <div class="row gy-4">
-      <div class="col-lg-4 col-md-6 footer-about">
-        <a href="index.html" class="logo d-flex align-items-center">
-          <span class="sitename">Meru Doctors' Plaza</span>
-        </a>
-        <div class="footer-contact pt-3">
-          <p>MERU</p>
-          <p>Meru,I&M Building Second Floor, Meru, Eastern Province,2828-60200, Meru, Eastern</p>
-          <p class="mt-3"><strong>Phone:</strong> <span>+2542345678</span></p>
-          <p><strong>Email:</strong> <span>merudoc@gmail.com </span></p>
-        </div>
-        <div class="social-links d-flex mt-4">
-          <a href=""><i class="bi bi-twitter-x"></i></a>
-          <a href=""><i class="bi bi-facebook"></i></a>
-          <a href=""><i class="bi bi-instagram"></i></a>
-          <a href=""><i class="bi bi-linkedin"></i></a>
-        </div>
+      <div class="footer-contact pt-3">
+        <p>MERU</p>
+        <p>Meru,I&M Building Second Floor, Meru, Eastern Province,2828-60200, Meru, Eastern</p>
+        <p class="mt-3"><strong>Phone:</strong> <span>+2542345678</span></p>
+        <p><strong>Email:</strong> <span>merudoc@gmail.com </span></p>
       </div>
-     </div>
-  
-  
+      <div class="social-links d-flex mt-4">
+        <a href=""><i class="bi bi-twitter-x"></i></a>
+        <a href=""><i class="bi bi-facebook"></i></a>
+        <a href=""><i class="bi bi-instagram"></i></a>
+        <a href=""><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+   </div>
+
+
 </div></div>
 
-  <div class="container copyright text-center mt-4">
-    <p>© <span>Copyright</span> <strong class="px-1 sitename"><span> <?php echo date("Y"); ?></span></strong> <span>All Rights Reserved</span></p>
-    <div class="credits">
-      
-      Designed by <a href="https://estonkiama.netlify.app/">Eston Kiama</a>
-    </div>
+<div class="container copyright text-center mt-4">
+  <p>© <span>Copyright</span> <strong class="px-1 sitename"><span> <?php echo date("Y"); ?></span></strong> <span>All Rights Reserved</span></p>
+  <div class="credits">
+    
+    Designed by <a href="https://estonkiama.netlify.app/">Eston Kiama</a>
   </div>
+</div>
 
 </footer>
 <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -363,19 +378,19 @@
 <script src="assets/js/main.js"></script>
 <script>
 document.addEventListener("contextmenu", function (e) {
-  e.preventDefault(); 
+e.preventDefault(); 
 });
 
 document.addEventListener("keydown", function (e) {
-  if (e.ctrlKey && (e.key === "u" || e.key === "U")) {
-    e.preventDefault(); 
-  }
-  if (e.key === "F12") {
-    e.preventDefault();
-  }
-  if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J")) {
-    e.preventDefault(); 
-  }
+if (e.ctrlKey && (e.key === "u" || e.key === "U")) {
+  e.preventDefault(); 
+}
+if (e.key === "F12") {
+  e.preventDefault();
+}
+if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J")) {
+  e.preventDefault(); 
+}
 });
 </script>
 
