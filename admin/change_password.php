@@ -6,7 +6,6 @@ if (!isset($_SESSION['email'])) {
     exit();
 }
 
-
 $host = 'localhost';
 $dbname = 'meru doctors plaza';
 $user = 'root';
@@ -16,7 +15,6 @@ $conn = new mysqli($host, $user, $pass, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -166,11 +164,7 @@ $conn->close();
         <button type="submit">Change Password</button>
         <center><a href="admin-appointment.php">Dashnoard</a></center>
     </form><br><br>
-   
-   
-
-
-
+    
 </body>
 
 </html>

@@ -1,12 +1,10 @@
 <?php
 session_start(); 
 
-
 if ($_SESSION['user_id'] != 1) {
     echo "You do not have permission to delete members.";
     exit();
 }
-
 
 $host = 'localhost';
 $dbname = 'meru doctors plaza';
@@ -18,7 +16,6 @@ $conn = new mysqli($host, $user, $pass, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
 
 if (isset($_POST['admin_id'])) {
     $admin_id = $conn->real_escape_string($_POST['admin_id']);

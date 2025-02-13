@@ -4,7 +4,6 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start(); 
 }
 
-
 $timeout_duration = 1800; 
 
 
@@ -16,7 +15,6 @@ if (isset($_SESSION['last_activity'])) {
         exit();
     }
 }
-
 
 $_SESSION['last_activity'] = time();
 

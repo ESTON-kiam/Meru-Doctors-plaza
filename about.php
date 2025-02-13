@@ -167,14 +167,9 @@
     Designed by <a href="https://estonkiama.netlify.app/">Eston Kiama</a>
   </div>
 </div>
-
 </footer>
 <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-
 <div id="preloader"></div>
-
-
 <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="assets/vendor/php-email-form/validate.js"></script>
 <script src="assets/vendor/aos/aos.js"></script>

@@ -4,9 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start(); 
 }
 
-
 $timeout_duration = 1800; 
-
 
 if (isset($_SESSION['last_activity'])) {
     if (time() - $_SESSION['last_activity'] > $timeout_duration) {
@@ -253,9 +251,6 @@ $conn->close();
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-
-
- 
   <script src="assets/js/main.js"></script>
 </body>
 </html>
