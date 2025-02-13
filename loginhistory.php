@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'db_connect.php'; // Ensure database connection
+require 'db_connect.php'; 
 
 if (!isset($_SESSION['user_id'])) {
     die("Access Denied! Please log in.");
@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// Fetch login history for the logged-in user
+
 $sql = "SELECT ip_address, browser, device, login_time FROM login_history WHERE user_id = ? ORDER BY login_time DESC";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $user_id);
