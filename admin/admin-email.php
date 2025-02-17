@@ -30,94 +30,12 @@ if (!isset($_SESSION['email'])) {
 
 <head>
     <meta charset="UTF-8">
+      <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/favicon.png" rel="apple-touch-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Send Email to Subscribers</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #e9f3ff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        h2 {
-            color: #003366; 
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        fieldset {
-            border: 2px solid #0056b3;
-            border-radius: 8px;
-            padding: 20px;
-            width: 100%;
-            max-width: 500px;
-            background-color: #ffffff; 
-        }
-
-        legend {
-            font-weight: bold;
-            color: #0056b3;
-            font-size: 1.5em;
-        }
-
-        label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 5px;
-            color: #333; 
-        }
-
-        input[type="text"],
-        textarea,
-        input[type="file"] {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            transition: border-color 0.3s;
-            box-sizing: border-box; 
-        }
-
-        input[type="text"]:focus,
-        textarea:focus,
-        input[type="file"]:focus {
-            border-color: #0056b3; 
-            outline: none;
-        }
-
-        button {
-            background-color: #0056b3; 
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            font-size: 16px; 
-            width: 100%; 
-        }
-
-        button:hover {
-            background-color: #004494; 
-        }
-
-     
-        @media (max-width: 600px) {
-            form {
-                padding: 20px;
-            }
-
-            button {
-                font-size: 14px;
-            }
-        }
-    </style>
+    <link href="assets/css/admin-email.css" rel="stylesheet">
 </head>
 
 <body>

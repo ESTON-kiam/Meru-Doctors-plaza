@@ -91,7 +91,7 @@ $conn->close();
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-  <!-- Main CSS File -->
+ 
   <link href="assets/css/main.css" rel="stylesheet">
   <link href="assets/css/notifi.css" rel="stylesheet">
   <script>
@@ -131,7 +131,7 @@ $conn->close();
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="admin-appointment.php" class="active">Appointments</a></li>
+            <li><a href="admin-appointment.php" >Appointments</a></li>
             <li><a href="admin-order.php">Orders</a></li>
             <li><a href="admin-messages.php">Messages</a></li>
             <li><a href="Register.php">Register new member</a></li>

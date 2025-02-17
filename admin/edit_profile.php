@@ -77,54 +77,11 @@ $conn->close();
 
 <head>
     <meta charset="UTF-8">
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/favicon.png" rel="apple-touch-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Profile - Meru Doctors Plaza</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            padding: 20px;
-        }
-
-        h2 {
-            color: #007bff; 
-        }
-
-        form {
-            background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        input[type="text"], input[type="file"] {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        button {
-            background-color: #007bff; 
-            color: white;
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%; 
-        }
-
-        button:hover {
-            background-color: #0056b3; 
-        }
-
-        .message {
-            color: #007bff;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-    </style>
+    <link href="assets/css/editprofile.css" rel="stylesheet">
 </head>
 
 <body>

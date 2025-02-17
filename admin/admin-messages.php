@@ -120,18 +120,17 @@ $conn->close();
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="admin-appointment.php" class="active">Appointments</a></li>
+            <li><a href="admin-appointment.php" >Appointments</a></li>
             <li><a href="admin-order.php">Orders</a></li>
             <li><a href="admin-messages.php">Messages</a></li>
             <li><a href="Register.php">Register new member</a></li>
             <li><a href="admin-email.php">Subsciber messaging</a></li>
        
             
-             <!-- Profile dropdown -->
-             <!-- Profile dropdown -->
+            
             <li class="dropdown">
               <button class="dropdown-btn">
-                <!-- Display profile picture -->
+                
                 <img src="<?php echo $profile_picture; ?>" alt="Profile Picture" style="width: 30px; height: 30px; border-radius: 50%; vertical-align: middle;">
                 Profile
               </button>

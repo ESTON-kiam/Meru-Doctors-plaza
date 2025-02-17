@@ -92,67 +92,13 @@ $conn->close();
 
 <head>
     <meta charset="UTF-8">
+       <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/favicon.png" rel="apple-touch-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Change Password - Meru Doctors Plaza</title>
     <link href="assets/css/main.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            height: 100vh; 
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        h2 {
-            color: #007bff; 
-            text-align: center;
-        }
-
-        form {
-            background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px; 
-        }
-
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        button {
-            background-color: #007bff;
-            color: white;
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        button:hover {
-            background-color: #0056b3; 
-        }
-
-        .error {
-            color: red;
-            text-align: center;
-        }
-
-        .success {
-            color: green;
-            text-align: center;
-        }
-       
-    </style>
+   <link href="assets/css/changepass.css" rel="stylesheet">
 </head>
 
 <body>

@@ -48,31 +48,11 @@ try {
 
 <head> 
     <meta charset="UTF-8"> 
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/favicon.png" rel="apple-touch-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>View Profile - Meru Doctors Plaza</title> 
-    <style> 
-        body { 
-            font-family: Arial, sans-serif; 
-            background-color: #f2f2f2; 
-            padding: 20px; 
-        } 
-
-        h2 { 
-            color: #007bff; 
-        } 
-
-        .profile-info { 
-            background-color: white; 
-            padding: 20px; 
-            border-radius: 5px; 
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-        } 
-
-        .error {
-            color: red;
-            font-weight: bold;
-        }
-    </style> 
+   <link href="assets/css/viewprofile.css" rel="stylesheet">
 </head> 
 
 <body> 
