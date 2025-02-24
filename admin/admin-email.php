@@ -30,7 +30,6 @@ if (!isset($_SESSION['email'])) {
 
 <head>
     <meta charset="UTF-8">
-      <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/favicon.png" rel="apple-touch-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
