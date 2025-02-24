@@ -6,7 +6,7 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta name="Open Hours" content="Monday-24hrs TUESDAY-24hrs WEDNESDAY-24hrs THURSDAY-24hrs FRIDAY-24hrs SATURDAY-24hrs Sunday-24hrs">
   <meta name="Author" content="Eston Kiama">
- <title>Meru Doctors' Plaza</title>
+ <title>Meru Doctors' Plaza-Doctors</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 

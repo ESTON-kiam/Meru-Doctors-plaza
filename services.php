@@ -6,7 +6,7 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta name="Open Hours" content="Monday-24hrs TUESDAY-24hrs WEDNESDAY-24hrs THURSDAY-24hrs FRIDAY-24hrs SATURDAY-24hrs Sunday-24hrs">
   <meta name="Author" content="Eston Kiama">
- <title>Meru Doctors' Plaza</title>
+ <title>Meru Doctors' Plaza-Services</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
   <link href="assets/img/favicon.png" rel="icon">
@@ -36,8 +36,7 @@
           <i class="bi bi-clock me-1"></i> </i> Monday - Sunday, Open 24 Hours Services
         </div>
       </div>
-    </div><!-- End Top Bar -->
-
+    </div>
     <div class="branding d-flex align-items-center">
 
       <div class="container position-relative d-flex align-items-center justify-content-end">
@@ -135,6 +134,11 @@
             <div class="col-md-4 form-group mt-3 mt-md-0">
                 <label for="email"></label><input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
             </div>
+            <div class="col-md-4 form-group mt-3">
+    <label for="national_id"></label>
+    <input type="text" name="national_id" class="form-control" id="national_id" placeholder="Your National ID" required>
+</div>
+
             <div class="col-md-4 form-group mt-3 mt-md-0">
                 <label for="phone"></label><input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone" required>
             </div>

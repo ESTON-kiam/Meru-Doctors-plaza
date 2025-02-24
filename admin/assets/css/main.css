@@ -295,7 +295,6 @@ h6 {
   }
 }
 
-
 .header {
   color: var(--default-color);
   background-color: var(--background-color);
@@ -349,7 +348,6 @@ h6 {
   color: var(--contrast-color);
   background: color-mix(in srgb, var(--accent-color), transparent 15%);
 }
-
 
 @media (min-width: 1200px) {
   .navmenu {
@@ -457,7 +455,6 @@ h6 {
     visibility: visible;
   }
 }
-
 
 @media (max-width: 1199px) {
   .mobile-nav-toggle {
@@ -584,7 +581,6 @@ h6 {
     display: block;
   }
 }
-
 
 .footer {
   color: var(--default-color);
@@ -733,7 +729,6 @@ h6 {
   }
 }
 
-
 .scroll-top {
   position: fixed;
   visibility: hidden;
@@ -764,13 +759,11 @@ h6 {
   opacity: 1;
 }
 
-
 @media screen and (max-width: 768px) {
   [data-aos-delay] {
     transition-delay: 0 !important;
   }
 }
-
 
 .page-title {
   color: var(--default-color);
@@ -832,7 +825,6 @@ section,
   }
 }
 
-
 .section-title {
   text-align: center;
   padding-bottom: 60px;
@@ -863,7 +855,6 @@ section,
 .section-title p {
   margin-bottom: 0;
 }
-
 
 .hero {
   padding: 0;
@@ -1029,7 +1020,6 @@ section,
   background: var(--accent-color);
 }
 
-
 .featured-services .service-item {
   background-color: var(--surface-color);
   box-shadow: 0px 0 25px 0 rgba(0, 0, 0, 0.1);
@@ -1039,7 +1029,6 @@ section,
   position: relative;
   z-index: 1;
 }
-
 .featured-services .service-item:before {
   content: "";
   position: absolute;
