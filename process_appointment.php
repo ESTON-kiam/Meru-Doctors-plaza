@@ -22,7 +22,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $appointment_date = isset($_POST['date']) && !empty($_POST['date']) 
     ? date('Y-m-d', strtotime($_POST['date'])) 
     : NULL;
-
     $department = $conn->real_escape_string($_POST['department']); 
     $doctor = $conn->real_escape_string($_POST['doctor']); 
     $message = isset($_POST['message']) ? $conn->real_escape_string($_POST['message']) : '';
