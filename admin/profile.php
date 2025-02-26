@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-
 if (!isset($_SESSION['email'])) {
     header("Location: http://localhost:8000/admin/"); 
     exit();
@@ -18,7 +17,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-
 $email = $_SESSION['email'];
 $stmt = $conn->prepare("SELECT national_id FROM members WHERE email = ?");
 $stmt->bind_param("s", $email);
@@ -34,7 +32,6 @@ $conn->close();
 
 <head>
     <meta charset="UTF-8">
-      <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/favicon.png" rel="apple-touch-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -99,9 +96,7 @@ $conn->close();
         }
     </style>
 </head>
-
 <body>
-
     <div class="dropdown">
         <button class="dropdown-btn">Profile</button>
         <div class="dropdown-content">

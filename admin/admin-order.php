@@ -24,16 +24,11 @@ if (!isset($_SESSION['email'])) {
     exit();
 }
 ?>
-
 <?php
-
-
-
 if (!isset($_SESSION['email'])) {
     header("Location: http://localhost:8000/admin/"); 
     exit();
 }
-
 
 $host = 'localhost';
 $dbname = 'meru doctors plaza';
@@ -46,7 +41,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-
 $email = $_SESSION['email'];
 $stmt = $conn->prepare("SELECT profile_picture FROM members WHERE email = ?");
 $stmt->bind_param("s", $email);
@@ -54,7 +48,6 @@ $stmt->execute();
 $stmt->bind_result($profile_picture);
 $stmt->fetch();
 $stmt->close();
-
 
 if (empty($profile_picture)) {
     $profile_picture = 'uploads/profile_pictures/default.png'; 

@@ -39,6 +39,5 @@ if (isset($_POST['id']) && is_numeric($_POST['id'])) {
     echo "Invalid message ID.";
 }
 
-
 $conn->close();
 ?>

@@ -12,11 +12,9 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-
 $appointments_query = "SELECT id, name, appointment_date FROM appointment WHERE is_read = 0";
 $appointments_result = $conn->query($appointments_query);
 $appointments = $appointments_result->fetch_all(MYSQLI_ASSOC);
-
 
 $orders_query = "SELECT id, name, order_date FROM orders WHERE is_read = 0";
 $orders_result = $conn->query($orders_query);

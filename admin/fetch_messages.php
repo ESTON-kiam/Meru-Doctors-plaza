@@ -11,7 +11,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-
 $sql = "SELECT * FROM contact ORDER BY date_sent DESC"; 
 $result = $conn->query($sql);
 

@@ -10,7 +10,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-
 $sql = "SELECT id, name, national_id, phone, appointment_date, department, doctor, message, created_at, comment FROM appointment";
 $result = $conn->query($sql);
 

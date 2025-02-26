@@ -41,8 +41,7 @@
           <i class="bi bi-clock me-1"></i> </i> Monday - Sunday, Open 24 Hours Services
         </div>
       </div>
-    </div><!-- End Top Bar -->
-
+    </div>
     <div class="branding d-flex align-items-center">
 
       <div class="container position-relative d-flex align-items-center justify-content-end">
@@ -77,8 +76,6 @@
   </header>
 
   <main class="main">
-
-    <!-- Hero Section -->
     <section id="hero" class="hero section">
 
       <div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
@@ -122,11 +119,7 @@
 
       </div>
 
-    </section><!-- /Hero Section -->
-
-   
-
-    <!-- Call To Action Section -->
+    </section>
     <section id="call-to-action" class="call-to-action section accent-background">
 
       <div class="container">
@@ -140,7 +133,7 @@
             </div>
             
 
-    </section><!-- /Call To Action Section -->
+    </section>
 
     <section class="breadcrumbs">
       <div class="container">
@@ -155,8 +148,6 @@
     </section>
     
 
-
-    <!-- Stats Section -->
     <section id="stats" class="stats section">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">

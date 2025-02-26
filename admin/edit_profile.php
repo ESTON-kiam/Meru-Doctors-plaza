@@ -1,12 +1,10 @@
 <?php
 session_start();
 
-
 if (!isset($_SESSION['email'])) {
     header("Location: http://localhost:8000/admin/"); 
     exit();
 }
-
 
 $host = 'localhost';
 $dbname = 'meru doctors plaza';
@@ -18,7 +16,6 @@ $conn = new mysqli($host, $user, $pass, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
 
 $email = $_SESSION['email'];
 $stmt = $conn->prepare("SELECT national_id, profile_picture FROM members WHERE email = ?");
@@ -35,7 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $new_national_id = $_POST['national_id'];
     $profile_picture = $current_profile_picture; 
 
-    
     if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] == 0) {
        
         $target_dir = "uploads/profile_pictures/";
@@ -43,7 +39,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $target_file = $target_dir . $file_name;
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-        
         $valid_extensions = array("jpg", "jpeg", "png", "gif");
         if (in_array($imageFileType, $valid_extensions)) {
             
@@ -57,7 +52,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $update_message = "Only image files (JPG, JPEG, PNG, GIF) are allowed.";
         }
     }
-
     
     $stmt = $conn->prepare("UPDATE members SET national_id = ?, profile_picture = ? WHERE email = ?");
     $stmt->bind_param("sss", $new_national_id, $profile_picture, $email);
@@ -71,7 +65,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 $conn->close();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 

@@ -40,8 +40,7 @@
           <i class="bi bi-clock me-1"></i> </i> Monday - Sunday, Open 24 Hours Services
         </div>
       </div>
-    </div><!-- End Top Bar -->
-
+    </div>
     <div class="branding d-flex align-items-center">
 
       <div class="container position-relative d-flex align-items-center justify-content-end">

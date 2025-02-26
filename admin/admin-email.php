@@ -27,7 +27,6 @@ if (!isset($_SESSION['email'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
   <link href="assets/img/favicon.png" rel="icon">

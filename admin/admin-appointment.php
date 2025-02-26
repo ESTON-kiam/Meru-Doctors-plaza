@@ -63,7 +63,6 @@ if (empty($profile_picture)) {
 
 $conn->close();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -74,7 +73,6 @@ $conn->close();
   <meta name="description" content="">
   <meta name="keywords" content="">
 
- 
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/favicon.png" rel="apple-touch-icon">
 

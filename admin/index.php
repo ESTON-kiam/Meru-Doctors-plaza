@@ -227,7 +227,6 @@ $conn->close();
                 <a href="forgot_password.html">Forgot Password?</a>
                 <a href="http://localhost:8000/">Back to Home</a>
             </div>
-
             <?php
             
             if (!empty($login_error)) {
@@ -240,9 +239,7 @@ $conn->close();
         
         if (isset($redirect_script)) {
             echo $redirect_script;
-        }
-        
-        
+        }        
         ob_end_flush(); 
         ?>
     </div>

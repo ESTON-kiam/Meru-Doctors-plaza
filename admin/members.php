@@ -1,10 +1,6 @@
 <?php
 session_start();
-
-
 $timeout_duration = 1800; 
-
-
 if (isset($_SESSION['last_activity'])) {
     if (time() - $_SESSION['last_activity'] > $timeout_duration) {
         session_unset(); 
@@ -14,9 +10,7 @@ if (isset($_SESSION['last_activity'])) {
     }
 }
 
-
 $_SESSION['last_activity'] = time();
-
 
 if (!isset($_SESSION['email'])) {
     header("Location: http://localhost:8000/admin/");
@@ -24,13 +18,10 @@ if (!isset($_SESSION['email'])) {
 }
 ?><?php
 
-
-
 if (!isset($_SESSION['email'])) {
     header("Location: http://localhost:8000/admin/"); 
     exit();
 }
-
 
 $host = 'localhost';
 $dbname = 'meru doctors plaza';
@@ -39,14 +30,11 @@ $pass = '';
 
 $conn = new mysqli($host, $user, $pass, $dbname);
 
-
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-
 $email = $_SESSION['email'];
-
 
 $stmt = $conn->prepare("SELECT id FROM members WHERE email = ?");
 $stmt->bind_param("s", $email);
@@ -55,20 +43,16 @@ $stmt->bind_result($admin_id);
 $stmt->fetch();
 $stmt->close();
 
-
 $is_super_admin = ($admin_id == 1);
-
 
 if (!$is_super_admin) {
     echo "You do not have permission to view this page.";
     exit();
 }
 
-
 $sql = "SELECT id, email, national_id, profile_picture FROM members";
 $result = $conn->query($sql);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -80,7 +64,6 @@ $result = $conn->query($sql);
     <link href="assets/css/members.css" rel="stylesheet">
 </head>
 <body>
-
     <h2>Members List</h2>
     <table>
         <thead>
@@ -100,12 +83,10 @@ $result = $conn->query($sql);
                 echo "<tr>";
                 echo "<td>" . $row['id'] . "</td>";
                 echo "<td>" . $row['email'] . "</td>";
-                echo "<td>" . $row['national_id'] . "</td>";
-                
+                echo "<td>" . $row['national_id'] . "</td>";                
                 
                 $profilePicture = !empty($row['profile_picture']) ? $row['profile_picture'] : 'default-profile.png';
                 echo "<td><img src='" . $profilePicture . "' alt='Profile Picture'></td>";
-
                
                 if ($row['id'] != 1) {
                     echo "<td>";

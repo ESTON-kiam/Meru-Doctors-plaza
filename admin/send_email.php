@@ -2,7 +2,6 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-
 require 'vendor/autoload.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -10,7 +9,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $message = $_POST['message'];
     $image = $_FILES['image'];
 
-    
     $host = 'localhost';
     $dbname = 'meru doctors plaza'; 
     $pass = ''; 
@@ -20,11 +18,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $pdo = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        
         $stmt = $pdo->query("SELECT email FROM subscribers");
         $subscribers = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-      
         $mail = new PHPMailer(true);
 
         try {
@@ -52,10 +48,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
             }
 
-          
             $mail->setFrom('no-reply@merudoctorsplaza.com', 'Meru Doctors\' Plaza'); 
 
-            
             foreach ($subscribers as $subscriber) {
                 $mail->addAddress($subscriber['email']); 
 

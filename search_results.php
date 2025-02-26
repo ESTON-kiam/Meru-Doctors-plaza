@@ -11,7 +11,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-
 if (isset($_GET['query'])) {
     $query = $conn->real_escape_string($_GET['query']);
 

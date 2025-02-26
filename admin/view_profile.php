@@ -1,7 +1,6 @@
 <?php 
 session_start(); 
 
-
 if (!isset($_SESSION['email'])) { 
     header("Location:http://localhost:8000/admin/"); 
     exit(); 
@@ -19,7 +18,6 @@ try {
         throw new Exception("Connection failed: " . $conn->connect_error);
     } 
 
-     
     $email = $_SESSION['email']; 
     $stmt = $conn->prepare("SELECT national_id, profile_picture FROM members WHERE email = ?"); 
     $stmt->bind_param("s", $email); 
@@ -42,7 +40,6 @@ try {
     $error_message = "An error occurred while fetching your profile. Please try again later.";
 }
 ?> 
-
 <!DOCTYPE html> 
 <html lang="en"> 
 
