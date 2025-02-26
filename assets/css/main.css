@@ -456,8 +456,6 @@ h6 {
     visibility: visible;
   }
 }
-
-
 @media (max-width: 1199px) {
   .mobile-nav-toggle {
     color: var(--nav-color);
@@ -698,8 +696,6 @@ h6 {
   margin-top: 8px;
   font-size: 13px;
 }
-
-
 #preloader {
   position: fixed;
   inset: 0;
@@ -730,8 +726,6 @@ h6 {
     transform: rotate(360deg);
   }
 }
-
-
 .scroll-top {
   position: fixed;
   visibility: hidden;
@@ -768,8 +762,6 @@ h6 {
     transition-delay: 0 !important;
   }
 }
-
-
 .page-title {
   color: var(--default-color);
   background-color: var(--background-color);

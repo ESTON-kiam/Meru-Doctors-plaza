@@ -70,9 +70,7 @@
 
         button:hover {
             background-color: #004494; 
-        }
-
-     
+        }     
         @media (max-width: 600px) {
             form {
                 padding: 20px;

@@ -243,8 +243,6 @@ h6 {
     opacity: 0;
   }
 }
-
-
 .php-email-form .error-message {
   display: none;
   background: blue;
@@ -728,7 +726,6 @@ h6 {
     transform: rotate(360deg);
   }
 }
-
 .scroll-top {
   position: fixed;
   visibility: hidden;
@@ -806,8 +803,6 @@ h6 {
   padding-right: 10px;
   color: color-mix(in srgb, var(--default-color), transparent 70%);
 }
-
-
 section,
 .section {
   color: var(--default-color);
@@ -1119,8 +1114,6 @@ section,
   color: var(--accent-color);
   border: 2px solid var(--accent-color);
 }
-
-
 .about .content h3 {
   font-size: 1.75rem;
   font-weight: 700;
@@ -1632,8 +1625,6 @@ section,
     transition: none;
   }
 }
-
-
 .pricing .pricing-item {
   background-color: var(--surface-color);
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);

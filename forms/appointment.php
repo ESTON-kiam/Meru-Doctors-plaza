@@ -1,6 +1,4 @@
 <?php
-
-
 $receiving_email_address = 'engestonbrandon@gmail.com';
 
 
@@ -10,12 +8,10 @@ if (!file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-fo
 
 include($php_email_form);
 
-
 $contact = new PHP_Email_Form;
 $contact->ajax = true;
 $contact->to = $receiving_email_address;
 $contact->subject = 'New Appointment Request';
-
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = htmlspecialchars(strip_tags($_POST['name']));
